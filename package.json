@@ -109,6 +109,31 @@
           "default": false,
           "description": "Add a tag to img tag"
         },
+        "wordpress-post.image.AddTitleAttribute" : {
+          "type" : "boolean",
+          "default": false,
+          "description": "Add title attribute to img tag"
+        },
+        "wordpress-post.image.AddSizeAttributes" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Add hight and width attributes to img tag"
+        },
+        "wordpress-post.image.Resize" : {
+          "type": "boolean",
+          "default" : false,
+          "description" : "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least."
+        },
+        "wordpress-post.image.maxiWidth" : {
+          "type": "number",
+          "default": 0,
+          "description": "Max image width. Use 0 to specify no limit"
+        },
+        "wordpress-post.image.maxHeight" : {
+          "type": "number",
+          "default": 0,
+          "description": "Max image height. use 0 to specify no limit"
+        },
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,

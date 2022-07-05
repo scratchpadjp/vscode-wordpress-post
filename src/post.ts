@@ -86,6 +86,11 @@ export const post = async (context: Context) => {
       continue;
     }
 
+    // add title attribute
+    if ( context.imageAddTitleAttribute() ) {
+      ch(imgs[i]).attr("title", ch(imgs[i]).attr("alt"));
+    }
+
     // replace src attr
     if (srcAttr.match(REG_WWWIMG)) {
       // www link -> as is
@@ -267,3 +272,13 @@ const getCurrentDocument = () => {
   // return document
   return editor.document;
 };
+
+function getImageSize(src: string) : [number, number] {
+  var image = new Image();
+
+  image.onload = function() {
+  };
+  image.src = src;
+
+  return [image.width, image.height];
+}

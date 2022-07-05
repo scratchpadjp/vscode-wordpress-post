@@ -116,6 +116,10 @@ export class Context {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }
 
+  imageAddTitleAttribute(): boolean {
+    return this.getConf("image.AddTitleAttribute");
+  }
+
   debug(text: string) {
     if (this.outputChannel) {
       const now = new Date();
