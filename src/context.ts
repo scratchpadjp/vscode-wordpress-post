@@ -112,12 +112,16 @@ export class Context {
     return this.getConf("useLinkableImage");
   }
 
-  getConf(id: string): any {
-    return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
-  }
-
   imageAddTitleAttribute(): boolean {
     return this.getConf("image.AddTitleAttribute");
+  }
+
+  imageAddSizeAttributes(): boolean {
+    return this.getConf("image.AddSizeAttributes");
+  }
+
+  getConf(id: string): any {
+    return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }
 
   debug(text: string) {

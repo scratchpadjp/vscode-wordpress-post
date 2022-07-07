@@ -6,6 +6,7 @@ import MarkdownIt = require("markdown-it");
 import * as matter from "gray-matter";
 import * as cheerio from "cheerio";
 import { Context } from "./context";
+import { pseudoRandomBytes } from "crypto";
 
 const REG_WWWIMG = new RegExp("^(http|https):.+");
 
@@ -89,6 +90,13 @@ export const post = async (context: Context) => {
     // add title attribute
     if ( context.imageAddTitleAttribute() ) {
       ch(imgs[i]).attr("title", ch(imgs[i]).attr("alt"));
+    }
+
+    // add size attributes
+    if ( context.imageAddSizeAttributes() ) {
+      const [width, height] = await getImageSize(docParsedPath.dir, srcAttr);
+      ch(imgs[i]).attr("width", width.toString());
+      ch(imgs[i]).attr("height", height.toString());
     }
 
     // replace src attr
@@ -273,12 +281,15 @@ const getCurrentDocument = () => {
   return editor.document;
 };
 
-function getImageSize(src: string) : [number, number] {
-  var image = new Image();
+async function getImageSize(base: string, src: string) {
+  const probe = require('probe-image-size');
+  
+  if (src.match(REG_WWWIMG)) {
+    const result = await probe(src);
+    return [result.width, result.height];
+  }
 
-  image.onload = function() {
-  };
-  image.src = src;
-
-  return [image.width, image.height];
+  let data = fs.readFileSync(base + "/" + src);
+  let result = probe.sync(data);
+  return [result.width, result.height];
 }
