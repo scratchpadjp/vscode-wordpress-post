@@ -122,9 +122,9 @@
         "wordpress-post.image.Resize" : {
           "type": "boolean",
           "default" : false,
-          "description" : "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least."
+          "description" : "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least. In addition, size attributes are automatically added to img tag if this option is true."
         },
-        "wordpress-post.image.maxiWidth" : {
+        "wordpress-post.image.maxWidth" : {
           "type": "number",
           "default": 0,
           "description": "Max image width. Use 0 to specify no limit"
@@ -163,13 +163,15 @@
     "glob": "^7.1.7",
     "mocha": "^9.1.3",
     "typescript": "^4.4.4",
-    "probe-image-size" : "7.2.3"
+    "probe-image-size" : "^7.2.3",
+    "sharp" : "^0.30.7"
   },
   "dependencies": {
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
     "gray-matter": "^4.0.3",
     "markdown-it": "^12.3.0",
-    "probe-image-size" : "7.2.3"
+    "probe-image-size" : "^7.2.3",
+    "sharp" : "^0.30.7"
   }
 }

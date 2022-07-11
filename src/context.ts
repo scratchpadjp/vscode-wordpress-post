@@ -77,6 +77,15 @@ export class Context {
   }
 
   /**
+   * Slug of attached image thumbnail
+   */
+  getAttachedImageThumbnailSlug(imageSlug: string, width: number, height: number): string {
+    const sep: string = this.getConf("slugSepalator");
+    const size: string = width.toString() + "x" + height.toString();
+    return imageSlug + sep + size;
+  }
+
+  /**
    * Media extensions
    */
   getMediaExtensions(): string[] {
@@ -118,6 +127,14 @@ export class Context {
 
   imageAddSizeAttributes(): boolean {
     return this.getConf("image.AddSizeAttributes");
+  }
+
+  imageResize(): boolean {
+    return this.getConf("image.Resize");
+  }
+
+  getImageMaxSize(): [number, number] {
+    return [this.getConf("image.maxWidth"), this.getConf("image.maxHeight")];
   }
 
   getConf(id: string): any {

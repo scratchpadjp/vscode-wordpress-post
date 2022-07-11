@@ -87,26 +87,36 @@ export const post = async (context: Context) => {
       continue;
     }
 
+    // save src attr to use useLinkableImage
+    let linkUri = srcAttr;
+
     // add title attribute
     if ( context.imageAddTitleAttribute() ) {
       ch(imgs[i]).attr("title", ch(imgs[i]).attr("alt"));
     }
 
-    // add size attributes
-    if ( context.imageAddSizeAttributes() ) {
-      const [width, height] = await getImageSize(docParsedPath.dir, srcAttr);
-      ch(imgs[i]).attr("width", width.toString());
-      ch(imgs[i]).attr("height", height.toString());
-    }
-
+    // Get image size information 
+    const [orgImgWidth, orgImgHeight] = await getImageSize(docParsedPath.dir, srcAttr);
+    const [maxImgWidth, maxImgHeight] = context.getImageMaxSize();
+    const [displayImgWidth, displayImgHeight] = calculateImageSize(orgImgWidth, orgImgHeight, maxImgWidth, maxImgHeight);
+    
     // replace src attr
     if (srcAttr.match(REG_WWWIMG)) {
       // www link -> as is
       // srcAttr = srcAttr
       context.debug(`[07I] www src: ${srcAttr}`);
+      if ( context.imageResize() ) {
+        ch(imgs[i]).attr("width", displayImgWidth.toString());
+        ch(imgs[i]).attr("height", displayImgHeight.toString());        
+      } else {
+        if ( context.imageAddSizeAttributes() ) {
+          ch(imgs[i]).attr("width", orgImgWidth.toString());
+          ch(imgs[i]).attr("height", orgImgHeight.toString());
+        }
+      }
     } else {
       // local(relative link) -> upload and replace src attr
-      // upload
+      // upload 
       context.debug(`[07I] local src: ${srcAttr}`);
       const attachedImgPath = path.join(docParsedPath.dir, srcAttr);
       context.debug(`[07I] local path: ${attachedImgPath}`);
@@ -119,13 +129,55 @@ export const post = async (context: Context) => {
 
       // replace src
       srcAttr = context.replaceAttachedImageUrl(imgItem["source_url"]);
+      linkUri = srcAttr;
 
       context.debug(`[07I] final image src: ${srcAttr}`);
+
+      // generate thumbnail image if needed.
+      if ( context.imageResize() ) {
+        if ( (orgImgWidth !== displayImgWidth) || (orgImgHeight !== displayImgHeight) ) {
+          const size = displayImgWidth.toString() + "x" + displayImgHeight.toString();
+          const thumbnail = 
+            path.join(
+              path.parse(attachedImgPath).dir,
+              path.parse(attachedImgPath).name + "-" + size + path.parse(attachedImgPath).ext
+            );
+          const thumbnailSlug = context.getAttachedImageThumbnailSlug(imgSlug, displayImgWidth, displayImgHeight);  
+
+          /* generate thumbnail */
+          const sharp = require("sharp");
+          try {
+            const data = sharp(attachedImgPath).resize({
+              width: displayImgWidth,
+              height: displayImgHeight,
+              fit: "fill" 
+            });
+            data.toFile(thumbnail);
+          }
+          catch(err) {
+            const msg = `Can't generate thumbnail file: ${attachedImgPath}`;
+            context.debug(msg);
+            throw new Error(msg);
+          };
+
+          /* upload thumbnail to wordpress */
+          const imgItem = await uploadImage(context, thumbnailSlug, thumbnail);
+          srcAttr = context.replaceAttachedImageUrl(imgItem["source_url"]);
+
+          ch(imgs[i]).attr("width", displayImgWidth.toString());
+          ch(imgs[i]).attr("height", displayImgHeight.toString());
+        }
+      } else {
+        if ( context.imageAddSizeAttributes() ) {
+          ch(imgs[i]).attr("width", orgImgWidth.toString());
+          ch(imgs[i]).attr("height", orgImgHeight.toString());
+        }
+      }
     }
     const newImgTag = ch.html(ch(imgs[i]).attr("src", srcAttr));
     if (context.useLinkableImage()) {
       context.debug(`[07I] use a tag`);
-      ch(imgs[i]).replaceWith(`<a href="${srcAttr}">${newImgTag}</a>`);
+      ch(imgs[i]).replaceWith(`<a href="${linkUri}">${newImgTag}</a>`);
     } else {
       context.debug(`[07I] not use a tag`);
       ch(imgs[i]).replaceWith(`${newImgTag}`);
@@ -292,4 +344,29 @@ async function getImageSize(base: string, src: string) {
   let data = fs.readFileSync(base + "/" + src);
   let result = probe.sync(data);
   return [result.width, result.height];
-}
+};
+
+function calculateImageSize(imgWidth: number, imgHeight: number, maxWidth: number, maxHeight: number) : [number, number] {
+
+  if ( (imgWidth <= maxWidth) || (maxWidth === 0) ) {
+    if ( (imgHeight <= maxHeight) || (maxHeight === 0) ) {
+      return [imgWidth, imgHeight];
+    } else {
+      return [Math.trunc(imgWidth * maxHeight / imgHeight), maxHeight];
+    }
+  }
+
+  // imgWidth is greater than maxWidth
+  if ( (imgHeight <= maxHeight) || (maxHeight === 0) ) {
+      return [maxWidth, Math.trunc(imgHeight * maxWidth / imgWidth)];
+  }
+
+  // both imgHeight and imgWidth are greater than maxWidth and maxHeight
+  const widthRatio = imgWidth / maxWidth;
+  const heightRatio = imgHeight / maxHeight;
+  if ( widthRatio > heightRatio ) {
+    return [maxWidth, Math.trunc(imgHeight * maxWidth / imgWidth)];
+  } else {
+    return [Math.trunc(imgWidth * maxHeight / imgHeight), maxHeight];
+  }
+};
