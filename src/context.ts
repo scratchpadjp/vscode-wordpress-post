@@ -133,6 +133,18 @@ export class Context {
     return this.getConf("image.Resize");
   }
 
+  getImageResizeJpegQuality(): number {
+    return this.getConf("image.ResizeJpegQuality");
+  }
+
+  useMozjpeg(): boolean {
+    return this.getConf("image.ResizeJpegUseMozjpeg");
+  }
+
+  usePngPalette(): boolean {
+    return this.getConf("image.ResizePngUsePalette");
+  }
+
   getImageMaxSize(): [number, number] {
     return [this.getConf("image.maxWidth"), this.getConf("image.maxHeight")];
   }

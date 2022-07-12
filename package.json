@@ -112,27 +112,42 @@
         "wordpress-post.image.AddTitleAttribute" : {
           "type" : "boolean",
           "default": false,
-          "description": "Add title attribute to img tag"
+          "description": "Add title attribute to img tag."
         },
         "wordpress-post.image.AddSizeAttributes" : {
           "type": "boolean",
           "default": false,
-          "description": "Add hight and width attributes to img tag"
+          "description": "Add hight and width attributes to img tag."
         },
         "wordpress-post.image.Resize" : {
           "type": "boolean",
           "default" : false,
           "description" : "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least. In addition, size attributes are automatically added to img tag if this option is true."
         },
+        "wordpress-post.image.ResizeJpegQuality" : {
+          "type": "number",
+          "default": 80,
+          "description": "JPEG quality when resizing. (default: 80)"
+        },
+        "wordpress-post.image.ResizeJpegUseMozjpeg" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Use mozjpeg to reduce JPEG file size when resizing."
+        },
+        "wordpress-post.image.ResizePngUsePalette" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Use palette (index color) to reduce PNG file size when resizing."
+        },
         "wordpress-post.image.maxWidth" : {
           "type": "number",
           "default": 0,
-          "description": "Max image width. Use 0 to specify no limit"
+          "description": "Max image width. Use 0 to specify no limit."
         },
         "wordpress-post.image.maxHeight" : {
           "type": "number",
           "default": 0,
-          "description": "Max image height. use 0 to specify no limit"
+          "description": "Max image height. use 0 to specify no limit."
         },
         "wordpress-post.debug": {
           "type": "boolean",
