@@ -122,27 +122,27 @@ export class Context {
   }
 
   imageAddTitleAttribute(): boolean {
-    return this.getConf("image.AddTitleAttribute");
+    return this.getConf("image.addTitleAttribute");
   }
 
   imageAddSizeAttributes(): boolean {
-    return this.getConf("image.AddSizeAttributes");
+    return this.getConf("image.addSizeAttributes");
   }
 
   imageResize(): boolean {
-    return this.getConf("image.Resize");
+    return this.getConf("image.resize");
   }
 
   getImageResizeJpegQuality(): number {
-    return this.getConf("image.ResizeJpegQuality");
+    return this.getConf("image.resizeJpegQuality");
   }
 
   useMozjpeg(): boolean {
-    return this.getConf("image.ResizeJpegUseMozjpeg");
+    return this.getConf("image.resizeJpegUseMozjpeg");
   }
 
   usePngPalette(): boolean {
-    return this.getConf("image.ResizePngUsePalette");
+    return this.getConf("image.resizePngUsePalette");
   }
 
   getImageMaxSize(): [number, number] {
