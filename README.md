@@ -208,6 +208,10 @@ This extension contributes the following settings:
 * `wordpress-post.typeAttachedImageSlug` : Processing rules for attached image file names.
 * `wordpress-post.mediaTypes` : File extensions and media types to enable.
 * `wordpress-post.useLinkableImage` : Add a tag to img tag.
+* `wordpress-post.formatHtml` : Format HTML data before posting.
+* `wordpress-post.formatHtmlAddBlankLineToHeaderTag` : Add a blank line before/after heading tag respectively when formatting HTML.
+* `wordpress-post.formatHtmlAddBlankLineToTableBlock` : Add a blank line before/after table block respectively when formatting HTML.
+* `wordpress-post.formatHtmlAddBlankLineToPreBlock` : Add a blank line before/after preformatted block respectively when formatting HTML.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:
