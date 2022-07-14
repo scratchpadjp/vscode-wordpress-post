@@ -146,6 +146,36 @@ export const post = async (context: Context) => {
     }
   }
 
+  // format HTML if needed
+  if ( context.getFormatHtml() ) {
+    const beautify = require('js-beautify').html;
+    postData["content"] = beautify(postData["content"]);
+
+    // add blank line before <hN> and after </hN> respectively
+    if ( context.getAddBlankLineToH() ) {
+      let content = postData["content"];
+      content = content.replace(/<h1>/g, '\n<h1>').replace(/<\/h1>/g, '</h1>\n');
+      content = content.replace(/<h2>/g, '\n<h2>').replace(/<\/h2>/g, '</h2>\n');
+      content = content.replace(/<h3>/g, '\n<h3>').replace(/<\/h3>/g, '</h3>\n');
+      content = content.replace(/<h4>/g, '\n<h4>').replace(/<\/h4>/g, '</h4>\n');
+      content = content.replace(/<h5>/g, '\n<h5>').replace(/<\/h5>/g, '</h5>\n');
+      content = content.replace(/<h6>/g, '\n<h6>').replace(/<\/h6>/g, '</h6>\n');
+      postData["content"] = content;
+    }
+    // add blank line before <table> and after </table> respectively
+    if ( context.getAddBlankLineToTable() ) {
+      let content = postData["content"];
+      content = content.replace(/<table>/g, '\n<table>').replace(/<\/table>/g, '</table>\n');
+      postData["content"] = content;
+    }
+    // add blank line before <pre> and after </pre> respectively
+    if ( context.getAddBlankLineToPre() ) {
+      let content = postData["content"];
+      content = content.replace(/<pre>/g, '\n<pre>').replace(/<\/pre>/g, '</pre>\n');
+      postData["content"] = content;
+    }
+  }
+
   // post
   context.debug(`[10S] post document`);
   const postItem = await getWpItem(

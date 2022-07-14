@@ -112,6 +112,23 @@ export class Context {
     return this.getConf("useLinkableImage");
   }
 
+
+  getFormatHtml(): boolean {
+    return this.getConf("formatHtml");
+  }
+
+  getAddBlankLineToH(): boolean {
+    return this.getConf("formatHtmlAddBlankLineToHeaderTag");
+  }
+
+  getAddBlankLineToTable(): boolean {
+    return this.getConf("formatHtmlAddBlankLineToTableBlock");
+  }
+
+  getAddBlankLineToPre(): boolean {
+    return this.getConf("formatHtmlAddBlankLineToPreBlock");
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }
