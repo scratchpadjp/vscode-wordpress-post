@@ -112,6 +112,10 @@ export class Context {
     return this.getConf("useLinkableImage");
   }
 
+  getEnableLinkify(): boolean {
+    return this.getConf("enableLinkify");
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }

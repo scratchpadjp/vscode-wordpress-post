@@ -208,6 +208,7 @@ This extension contributes the following settings:
 * `wordpress-post.typeAttachedImageSlug` : Processing rules for attached image file names.
 * `wordpress-post.mediaTypes` : File extensions and media types to enable.
 * `wordpress-post.useLinkableImage` : Add a tag to img tag.
+* `wordpress-post.enableLinkify` : Auto-convert URL-like text to links if enabled.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:

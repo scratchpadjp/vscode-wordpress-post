@@ -2,7 +2,6 @@ import * as vscode from "vscode";
 import * as path from "path";
 import * as fs from "fs";
 import axios from "axios";
-import MarkdownIt = require("markdown-it");
 import * as matter from "gray-matter";
 import * as cheerio from "cheerio";
 import { Context } from "./context";
@@ -71,7 +70,16 @@ export const post = async (context: Context) => {
 
   // markdown -> post data content
   context.debug(`[06S] convert to html`);
-  postData["content"] = MarkdownIt().render(markdown.content);
+  const md = require("markdown-it")({
+    linkify: context.getEnableLinkify()
+  });
+  if ( context.getEnableLinkify() ) {
+    md.linkify.set({
+      fuzzyLink: false,
+      fuzzyEmail: false
+    });
+  }
+  postData["content"] = md.render(markdown.content);
   context.debug(`[06E] converted to html`);
 
   // upload attached image file, change src

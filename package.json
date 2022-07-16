@@ -109,6 +109,11 @@
           "default": false,
           "description": "Add a tag to img tag"
         },
+        "wordpress-post.enableLinkify" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Auto-convert URL-like text to links if enabled."
+        },
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,
