@@ -218,6 +218,10 @@ This extension contributes the following settings:
 * `wordpress-post.image.resizePngUsePalette` : Use palette (index color) to reduce PNG file size when resizing.
 * `wordpress-post.image.maxWidth` : Max image width. Use 0 to specify no limit.
 * `wordpress-post.image.maxHeight` : Max image height. use 0 to specify no limit.
+* `wordpress-post.formatHtml` : Format HTML data before posting.
+* `wordpress-post.formatHtmlAddBlankLineToHeaderTag` : Add a blank line before/after heading tag respectively when formatting HTML.
+* `wordpress-post.formatHtmlAddBlankLineToTableBlock` : Add a blank line before/after table block respectively when formatting HTML.
+* `wordpress-post.formatHtmlAddBlankLineToPreBlock` : Add a blank line before/after preformatted block respectively when formatting HTML.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:

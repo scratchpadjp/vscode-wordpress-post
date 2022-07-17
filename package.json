@@ -167,6 +167,26 @@
           "default": 0,
           "description": "Max image height. use 0 to specify no limit."
         },
+        "wordpress-post.formatHtml" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Format HTML data before posting."
+        },
+        "wordpress-post.formatHtmlAddBlankLineToHeaderTag" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Add a blank line before/after heading tag respectively when formatting HTML."
+        },
+        "wordpress-post.formatHtmlAddBlankLineToTableBlock" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Add a blank line before/after table block respectively when formatting HTML."
+        },
+        "wordpress-post.formatHtmlAddBlankLineToPreBlock" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Add a blank line before/after preformatted block respectively when formatting HTML."
+        },
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,
@@ -203,6 +223,7 @@
     "gray-matter": "^4.0.3",
     "markdown-it": "^12.3.0",
     "probe-image-size" : "^7.2.3",
-    "sharp" : "^0.30.7"
+    "sharp" : "^0.30.7",
+    "js-beautify": "^1.14.4"
   }
 }
