@@ -187,6 +187,11 @@
           "default": false,
           "description": "Add a blank line before/after preformatted block respectively when formatting HTML."
         },
+        "wordpress-post.enableLinkify" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Auto-convert URL-like text to links if enabled."
+        },
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,

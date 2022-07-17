@@ -191,6 +191,13 @@ export class Context {
     return this.getConf("formatHtmlAddBlankLineToPreBlock");
   }
 
+  /**
+   * Generate Link to URL-like text
+   */
+  getEnableLinkify(): boolean {
+    return this.getConf("enableLinkify");
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }

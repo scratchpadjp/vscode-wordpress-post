@@ -71,10 +71,17 @@ export const post = async (context: Context) => {
   // markdown -> post data content
   context.debug(`[06S] convert to html`);
   const md = require('markdown-it')({
+    linkify: context.getEnableLinkify(),
     highlight: function (str: string, lang: string) {
       return context.getCodeBlockStartTag(lang) + md.utils.escapeHtml(str) + context.getCodeBlockEndTag();
     }
   });
+  if ( context.getEnableLinkify() ) {
+    md.linkify.set({
+      fuzzyLink: false,
+      fuzzyEmail: false
+    });
+  }
   postData["content"] = md.render(markdown.content);
   context.debug(`[06E] converted to html`);
 
