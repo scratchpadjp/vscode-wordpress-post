@@ -6,7 +6,6 @@ import MarkdownIt = require("markdown-it");
 import * as matter from "gray-matter";
 import * as cheerio from "cheerio";
 import { Context } from "./context";
-import { pseudoRandomBytes } from "crypto";
 
 const REG_WWWIMG = new RegExp("^(http|https):.+");
 
