@@ -210,6 +210,14 @@ This extension contributes the following settings:
 * `wordpress-post.useLinkableImage` : Add a tag to img tag.
 * `wordpress-post.codeBlockLanguagePrefix` : Prefix of class name for code block
 * `wordpress-post.codeBlockTag` : HTML tag which specifies language class
+* `wordpress-post.image.addTitleAttribute` : Add title attribute to img tag.
+* `wordpress-post.image.addSizeAttributes` : Add hight and width attributes to img tag.
+* `wordpress-post.image.resize` : Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least. In addition, size attributes are automatically added to img tag if this option is true.
+* `wordpress-post.image.resizeJpegQuality` : JPEG quality when resizing. (default: 80)
+* `wordpress-post.image.resizeJpegUseMozjpeg` : Use mozjpeg to reduce JPEG file size when resizing.
+* `wordpress-post.image.resizePngUsePalette` : Use palette (index color) to reduce PNG file size when resizing.
+* `wordpress-post.image.maxWidth` : Max image width. Use 0 to specify no limit.
+* `wordpress-post.image.maxHeight` : Max image height. use 0 to specify no limit.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:

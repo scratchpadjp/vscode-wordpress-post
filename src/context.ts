@@ -77,6 +77,15 @@ export class Context {
   }
 
   /**
+   * Slug of attached image thumbnail
+   */
+  getAttachedImageThumbnailSlug(imageSlug: string, width: number, height: number): string {
+    const sep: string = this.getConf("slugSepalator");
+    const size: string = width.toString() + "x" + height.toString();
+    return imageSlug + sep + size;
+  }
+
+  /**
    * Media extensions
    */
   getMediaExtensions(): string[] {
@@ -124,8 +133,43 @@ export class Context {
       return "<pre><code class=\"" + prefix + lang + "\">";
     }
   }
+
   getCodeBlockEndTag() : string {
     return "</code></pre>";
+  }
+
+  /**
+   * img tag
+   */
+  imageAddTitleAttribute(): boolean {
+    return this.getConf("image.addTitleAttribute");
+  }
+
+  imageAddSizeAttributes(): boolean {
+    return this.getConf("image.addSizeAttributes");
+  }
+
+  /**
+   * Resizing image 
+   */
+  imageResize(): boolean {
+    return this.getConf("image.resize");
+  }
+
+  getImageResizeJpegQuality(): number {
+    return this.getConf("image.resizeJpegQuality");
+  }
+
+  useMozjpeg(): boolean {
+    return this.getConf("image.resizeJpegUseMozjpeg");
+  }
+
+  usePngPalette(): boolean {
+    return this.getConf("image.resizePngUsePalette");
+  }
+
+  getImageMaxSize(): [number, number] {
+    return [this.getConf("image.maxWidth"), this.getConf("image.maxHeight")];
   }
 
   getConf(id: string): any {
