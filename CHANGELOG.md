@@ -1,8 +1,14 @@
 # Change Log
 
-## [Unreleased]
+## [0.0.5-a] - 2022-07-18
 
-- Initial major release
+- Unofficial version supporting the following features.
+
+    - Add customizing code block options
+    - Add size attributes to img tag
+    - Add resizing image options
+    - Add formatting HTML option
+    - Add linkify URL-like text option
 
 ## [0.0.5] - 2022-03-05
 

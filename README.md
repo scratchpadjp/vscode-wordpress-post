@@ -1,3 +1,16 @@
+# Note
+
+This is unofficial version of "WordPress Post" extension. Yur can find source code in github.
+* https://github.com/scratchpadjp/vscode-wordpress-post/tree/integration-local-changes
+
+The following changes were applied to the original version of WordPress Post (0.0.5).
+
+* Add customizing code block options (customize-code-block-class branch)
+* Add size attributes to img tag (change-image-handling branch)
+* Add resizing image options (change-image-handling branch)
+* Add formatting HTML option (format-html-before-posting branch)
+* Add linkify URL-like text option (linkify-url-like-text)
+
 # WordPress Post
 
 This Visual Studio Code extension provides action that posts articles to WordPress.
