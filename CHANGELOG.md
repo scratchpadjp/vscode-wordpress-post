@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.0.5-a] - 2022-07-18
+## [0.0.6-a] - 2022-07-18
 
 - Unofficial version supporting the following features.
 
