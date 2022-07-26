@@ -112,7 +112,7 @@
         "wordpress-post.image.addTitleAttribute" : {
           "type" : "boolean",
           "default": false,
-          "description": "Add title attribute to img tag."
+          "description": "Add title attribute to img tag using alt attribute value if title is not specified in Markdown."
         },
         "wordpress-post.image.addSizeAttributes" : {
           "type": "boolean",
