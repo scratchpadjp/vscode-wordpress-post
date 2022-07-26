@@ -102,7 +102,9 @@ export const post = async (context: Context) => {
 
     // add title attribute
     if ( context.imageAddTitleAttribute() ) {
-      ch(imgs[i]).attr("title", ch(imgs[i]).attr("alt"));
+      if ( !ch(imgs[i]).attr("title") ) {
+        ch(imgs[i]).attr("title", ch(imgs[i]).attr("alt"));
+      }
     }
 
     // Get image size information 
