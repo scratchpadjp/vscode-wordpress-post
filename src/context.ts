@@ -129,6 +129,10 @@ export class Context {
     return this.getConf("formatHtmlAddBlankLineToPreBlock");
   }
 
+  getAddBlankLineToDiv(): boolean {
+    return this.getConf("formatHtmlAddBlankLineToDivBlock");
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }
