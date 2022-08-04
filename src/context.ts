@@ -112,6 +112,15 @@ export class Context {
     return this.getConf("useLinkableImage");
   }
 
+  getCustomContainer(no : number) : [string, string, string] {
+    const key : string = "customContainer.no" + no.toString();
+    const conf = vscode.workspace.getConfiguration(this.prefixOfSettings);
+    const name : string = conf.get<string>(key + ".name", "");
+    const openingTag : string = conf.get<string>(key + ".openingTag", "");
+    const closingTag : string = conf.get<string>(key + ".closingTag", "");
+    return [name, openingTag, closingTag];
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }

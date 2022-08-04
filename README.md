@@ -208,6 +208,11 @@ This extension contributes the following settings:
 * `wordpress-post.typeAttachedImageSlug` : Processing rules for attached image file names.
 * `wordpress-post.mediaTypes` : File extensions and media types to enable.
 * `wordpress-post.useLinkableImage` : Add a tag to img tag.
+* `wordpress-post.customContainer.no1` : Custom container #1 settings.
+* `wordpress-post.customContainer.no2` : Custom container #2 settings.
+* `wordpress-post.customContainer.no3` : Custom container #3 settings.
+* `wordpress-post.customContainer.no4` : Custom container #4 settings.
+* `wordpress-post.customContainer.no5` : Custom container #5 settings.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:
