@@ -10,6 +10,7 @@ The following changes were applied to the original version of WordPress Post (0.
 * Add resizing image options (change-image-handling branch)
 * Add formatting HTML option (format-html-before-posting branch)
 * Add linkify URL-like text option (linkify-url-like-text)
+* Add custom container options (support custom container)
 
 # WordPress Post
 
@@ -237,6 +238,11 @@ This extension contributes the following settings:
 * `wordpress-post.formatHtmlAddBlankLineToPreBlock` : Add a blank line before/after preformatted block respectively when formatting HTML.
 * `wordpress-post.formatHtmlAddBlankLineToDivBlock` : Add a blank line before/after div block respectively when formatting HTML.
 * `wordpress-post.enableLinkify` : Auto-convert URL-like text to links if enabled.
+* `wordpress-post.customContainer.no1` : Custom container #1 settings.
+* `wordpress-post.customContainer.no2` : Custom container #2 settings.
+* `wordpress-post.customContainer.no3` : Custom container #3 settings.
+* `wordpress-post.customContainer.no4` : Custom container #4 settings.
+* `wordpress-post.customContainer.no5` : Custom container #5 settings.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:

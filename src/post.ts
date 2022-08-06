@@ -82,6 +82,27 @@ export const post = async (context: Context) => {
       fuzzyEmail: false
     });
   }
+  // set custom container 
+  for (let i = 1; i <= 5; i++ ) {
+    const [containerName, openingTag, closingTag ] = context.getCustomContainer(i);
+    if ( containerName ) {
+      if ( !openingTag && !closingTag) {
+        md.use(require('markdown-it-container'), containerName); // <div class="containerName"> ... </div>
+      } else {
+        md.use(require('markdown-it-container'), containerName, {
+          render: function (tokens : any, idx : number) {
+            if (tokens[idx].nesting === 1) {
+              // opening tag
+              return openingTag + '\n';
+            } else {
+            // closing tag
+              return closingTag + '\n';
+            }
+          }
+        });
+      }
+    }
+  }
   postData["content"] = md.render(markdown.content);
   context.debug(`[06E] converted to html`);
 
