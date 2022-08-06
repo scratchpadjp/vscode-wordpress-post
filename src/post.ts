@@ -168,17 +168,17 @@ export const post = async (context: Context) => {
             // encode JPEG or PNG according to configuration
             const ext = path.parse(attachedImgPath).ext.toLowerCase();
             if ( (ext === ".jpg") || (ext === ".jpeg") ) {
-              data = data.jpeg({
+              data = await data.jpeg({
                 quality: context.getImageResizeJpegQuality(),
                 mozjpeg: context.useMozjpeg()
               });
             }
             if ( ext === ".png" ) {
-              data = data.png({
+              data = await data.png({
                 palette: context.usePngPalette()
               });
             }
-            data.toFile(thumbnail);
+            await data.toFile(thumbnail);
           }
           catch(err) {
             const msg = `Can't generate thumbnail file: ${attachedImgPath}`;
