@@ -187,6 +187,11 @@
           "default": false,
           "description": "Add a blank line before/after preformatted block respectively when formatting HTML."
         },
+        "wordpress-post.formatHtmlAddBlankLineToDivBlock" : {
+          "type": "boolean",
+          "default": false,
+          "description": "Add a blank line before/after div block respectively when formatting HTML."
+        },
         "wordpress-post.enableLinkify" : {
           "type": "boolean",
           "default": false,

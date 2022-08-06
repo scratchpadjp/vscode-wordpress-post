@@ -191,6 +191,10 @@ export class Context {
     return this.getConf("formatHtmlAddBlankLineToPreBlock");
   }
 
+  getAddBlankLineToDiv(): boolean {
+    return this.getConf("formatHtmlAddBlankLineToDivBlock");
+  }
+
   /**
    * Generate Link to URL-like text
    */

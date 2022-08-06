@@ -235,6 +235,7 @@ This extension contributes the following settings:
 * `wordpress-post.formatHtmlAddBlankLineToHeaderTag` : Add a blank line before/after heading tag respectively when formatting HTML.
 * `wordpress-post.formatHtmlAddBlankLineToTableBlock` : Add a blank line before/after table block respectively when formatting HTML.
 * `wordpress-post.formatHtmlAddBlankLineToPreBlock` : Add a blank line before/after preformatted block respectively when formatting HTML.
+* `wordpress-post.formatHtmlAddBlankLineToDivBlock` : Add a blank line before/after div block respectively when formatting HTML.
 * `wordpress-post.enableLinkify` : Auto-convert URL-like text to links if enabled.
 * `wordpress-post.debug` : Debug of this extension.
 
