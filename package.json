@@ -197,7 +197,7 @@
           "default": false,
           "description": "Auto-convert URL-like text to links if enabled."
         },
-        "wordpress-post.customContainer.no1": {
+        "wordpress-post.customContainer.no01": {
           "type": "object",
           "description": "Create block-level custom containers #1.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
           "properties": {
@@ -221,7 +221,7 @@
             "closingTag" : ""
           }
         },
-        "wordpress-post.customContainer.no2": {
+        "wordpress-post.customContainer.no02": {
           "type": "object",
           "description": "Create block-level custom containers #2.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
           "properties": {
@@ -245,7 +245,7 @@
             "closingTag" : ""
           }
         },
-        "wordpress-post.customContainer.no3": {
+        "wordpress-post.customContainer.no03": {
           "type": "object",
           "description": "Create block-level custom containers #3.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
           "properties": {
@@ -269,7 +269,7 @@
             "closingTag" : ""
           }
         },
-        "wordpress-post.customContainer.no4": {
+        "wordpress-post.customContainer.no04": {
           "type": "object",
           "description": "Create block-level custom containers #4.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
           "properties": {
@@ -293,7 +293,7 @@
             "closingTag" : ""
           }
         },
-        "wordpress-post.customContainer.no5": {
+        "wordpress-post.customContainer.no05": {
           "type": "object",
           "description": "Create block-level custom containers #5.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
           "properties": {
@@ -317,6 +317,126 @@
             "closingTag" : ""
           }
         },        
+        "wordpress-post.customContainer.no06": {
+          "type": "object",
+          "description": "Create block-level custom containers #6.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of custom container #6. If blank, this container is disabled."
+            },
+            "openingTag": {
+              "type": "string",
+              "description": "Opening HTML code of custom container #6."
+            },
+            "closingTag": {
+              "type": "string",
+              "description": "Closing HTML code of custom container #6."
+            }
+          },
+          "additionalProperties": false,
+          "default" : {
+            "name" : "",
+            "openingTag" : "",
+            "closingTag" : ""
+          }
+        },
+        "wordpress-post.customContainer.no07": {
+          "type": "object",
+          "description": "Create block-level custom containers #7.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of custom container #7. If blank, this container is disabled."
+            },
+            "openingTag": {
+              "type": "string",
+              "description": "Opening HTML code of custom container #7."
+            },
+            "closingTag": {
+              "type": "string",
+              "description": "Closing HTML code of custom container #7."
+            }
+          },
+          "additionalProperties": false,
+          "default" : {
+            "name" : "",
+            "openingTag" : "",
+            "closingTag" : ""
+          }
+        },
+        "wordpress-post.customContainer.no08": {
+          "type": "object",
+          "description": "Create block-level custom containers #8.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of custom container #8. If blank, this container is disabled."
+            },
+            "openingTag": {
+              "type": "string",
+              "description": "Opening HTML code of custom container #8."
+            },
+            "closingTag": {
+              "type": "string",
+              "description": "Closing HTML code of custom container #8."
+            }
+          },
+          "additionalProperties": false,
+          "default" : {
+            "name" : "",
+            "openingTag" : "",
+            "closingTag" : ""
+          }
+        },
+        "wordpress-post.customContainer.no09": {
+          "type": "object",
+          "description": "Create block-level custom containers #9.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of custom container #9. If blank, this container is disabled."
+            },
+            "openingTag": {
+              "type": "string",
+              "description": "Opening HTML code of custom container #9."
+            },
+            "closingTag": {
+              "type": "string",
+              "description": "Closing HTML code of custom container #9."
+            }
+          },
+          "additionalProperties": false,
+          "default" : {
+            "name" : "",
+            "openingTag" : "",
+            "closingTag" : ""
+          }
+        },
+        "wordpress-post.customContainer.no10": {
+          "type": "object",
+          "description": "Create block-level custom containers #10.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of custom container #10. If blank, this container is disabled."
+            },
+            "openingTag": {
+              "type": "string",
+              "description": "Opening HTML code of custom container #10."
+            },
+            "closingTag": {
+              "type": "string",
+              "description": "Closing HTML code of custom container #10."
+            }
+          },
+          "additionalProperties": false,
+          "default" : {
+            "name" : "",
+            "openingTag" : "",
+            "closingTag" : ""
+          }
+        },
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,

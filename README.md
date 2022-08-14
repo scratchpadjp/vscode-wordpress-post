@@ -238,11 +238,16 @@ This extension contributes the following settings:
 * `wordpress-post.formatHtmlAddBlankLineToPreBlock` : Add a blank line before/after preformatted block respectively when formatting HTML.
 * `wordpress-post.formatHtmlAddBlankLineToDivBlock` : Add a blank line before/after div block respectively when formatting HTML.
 * `wordpress-post.enableLinkify` : Auto-convert URL-like text to links if enabled.
-* `wordpress-post.customContainer.no1` : Custom container #1 settings.
-* `wordpress-post.customContainer.no2` : Custom container #2 settings.
-* `wordpress-post.customContainer.no3` : Custom container #3 settings.
-* `wordpress-post.customContainer.no4` : Custom container #4 settings.
-* `wordpress-post.customContainer.no5` : Custom container #5 settings.
+* `wordpress-post.customContainer.no01` : Custom container #1 settings.
+* `wordpress-post.customContainer.no02` : Custom container #2 settings.
+* `wordpress-post.customContainer.no03` : Custom container #3 settings.
+* `wordpress-post.customContainer.no04` : Custom container #4 settings.
+* `wordpress-post.customContainer.no05` : Custom container #5 settings.
+* `wordpress-post.customContainer.no06` : Custom container #6 settings.
+* `wordpress-post.customContainer.no07` : Custom container #7 settings.
+* `wordpress-post.customContainer.no08` : Custom container #8 settings.
+* `wordpress-post.customContainer.no09` : Custom container #9 settings.
+* `wordpress-post.customContainer.no10` : Custom container #10 settings.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:
