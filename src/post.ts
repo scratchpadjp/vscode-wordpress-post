@@ -72,7 +72,7 @@ export const post = async (context: Context) => {
   context.debug(`[06S] convert to html`);
   const md = require("markdown-it")();
   // set custom container 
-  for (let i = 1; i <= 5; i++ ) {
+  for (let i = 1; i <= 10; i++ ) {
     const [containerName, openingTag, closingTag ] = context.getCustomContainer(i);
     if ( containerName ) {
       if ( !openingTag && !closingTag) {

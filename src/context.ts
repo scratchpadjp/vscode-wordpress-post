@@ -113,7 +113,7 @@ export class Context {
   }
 
   getCustomContainer(no : number) : [string, string, string] {
-    const key : string = "customContainer.no" + no.toString();
+    const key : string = "customContainer.no" + no.toString().padStart(2, "0");
     const conf = vscode.workspace.getConfiguration(this.prefixOfSettings);
     const name : string = conf.get<string>(key + ".name", "");
     const openingTag : string = conf.get<string>(key + ".openingTag", "");
