@@ -248,6 +248,7 @@ This extension contributes the following settings:
 * `wordpress-post.customContainer.no08` : Custom container #8 settings.
 * `wordpress-post.customContainer.no09` : Custom container #9 settings.
 * `wordpress-post.customContainer.no10` : Custom container #10 settings.
+* `wordpress-post.useCustomSpan` : Enable custom spam feature by using markdown-it-bracketed-spans module.
 * `wordpress-post.debug` : Debug of this extension.
 
 My setting.json is:

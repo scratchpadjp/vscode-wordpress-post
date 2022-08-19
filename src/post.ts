@@ -69,6 +69,7 @@ export const post = async (context: Context) => {
   context.debug(`[04E] detected document slug : ${postData["slug"]}`);
 
   // markdown -> post data content
+  // initialize markdown-it module
   context.debug(`[06S] convert to html`);
   const md = require('markdown-it')({
     linkify: context.getEnableLinkify(),
@@ -76,6 +77,7 @@ export const post = async (context: Context) => {
       return context.getCodeBlockStartTag(lang) + md.utils.escapeHtml(str) + context.getCodeBlockEndTag();
     }
   });
+  // set linkify parameters
   if ( context.getEnableLinkify() ) {
     md.linkify.set({
       fuzzyLink: false,
@@ -103,6 +105,11 @@ export const post = async (context: Context) => {
       }
     }
   }
+  // enable custom span
+  if ( context.useCustomSpan() ) {
+    md.use(require('markdown-it-bracketed-spans')).use(require('markdown-it-attrs'));
+  }
+  // convert markdown -> post data content (HTML)
   postData["content"] = md.render(markdown.content);
   context.debug(`[06E] converted to html`);
 
