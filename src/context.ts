@@ -214,6 +214,13 @@ export class Context {
     return [name, openingTag, closingTag];
   }
 
+  /**
+   * Custom span
+   */
+  useCustomSpan(): boolean {
+    return this.getConf("useCustomSpan")
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }

@@ -437,6 +437,11 @@
             "closingTag" : ""
           }
         },
+        "wordpress-post.useCustomSpan": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable custom spam feature by using markdown-it-bracketed-spans module."
+        },        
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,
@@ -475,6 +480,8 @@
     "probe-image-size" : "^7.2.3",
     "sharp" : "^0.30.7",
     "js-beautify": "^1.14.4",
-    "markdown-it-container": "^3.0.0"
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-bracketed-spans": "^1.0.1",
+    "markdown-it-attrs": "^4.1.4"
   }
 }
