@@ -2,7 +2,7 @@
   "name": "wordpress-post",
   "displayName": "WordPress Post",
   "description": "This extension posts articles to WordPress.",
-  "version": "0.0.6-d",
+  "version": "0.0.6-e",
   "publisher": "masa86",
   "repository": {
     "type": "git",
@@ -117,8 +117,8 @@
         "wordpress-post.codeBlockTag": {
           "type": "string",
           "default": "code",
-          "description" : "HTML tag which specifies language class",
-          "enum" : [
+          "description": "HTML tag which specifies language class",
+          "enum": [
             "code",
             "pre"
           ],
@@ -127,72 +127,72 @@
             "Add class for language to <pre> tag"
           ]
         },
-        "wordpress-post.image.addTitleAttribute" : {
-          "type" : "boolean",
+        "wordpress-post.image.addTitleAttribute": {
+          "type": "boolean",
           "default": false,
           "description": "Add title attribute to img tag using alt attribute value if title is not specified in Markdown."
         },
-        "wordpress-post.image.addSizeAttributes" : {
+        "wordpress-post.image.addSizeAttributes": {
           "type": "boolean",
           "default": false,
           "description": "Add hight and width attributes to img tag."
         },
-        "wordpress-post.image.resize" : {
+        "wordpress-post.image.resize": {
           "type": "boolean",
-          "default" : false,
-          "description" : "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least. In addition, size attributes are automatically added to img tag if this option is true."
+          "default": false,
+          "description": "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least. In addition, size attributes are automatically added to img tag if this option is true."
         },
-        "wordpress-post.image.resizeJpegQuality" : {
+        "wordpress-post.image.resizeJpegQuality": {
           "type": "number",
           "default": 80,
           "description": "JPEG quality when resizing. (default: 80)"
         },
-        "wordpress-post.image.resizeJpegUseMozjpeg" : {
+        "wordpress-post.image.resizeJpegUseMozjpeg": {
           "type": "boolean",
           "default": false,
           "description": "Use mozjpeg to reduce JPEG file size when resizing."
         },
-        "wordpress-post.image.resizePngUsePalette" : {
+        "wordpress-post.image.resizePngUsePalette": {
           "type": "boolean",
           "default": false,
           "description": "Use palette (index color) to reduce PNG file size when resizing."
         },
-        "wordpress-post.image.maxWidth" : {
+        "wordpress-post.image.maxWidth": {
           "type": "number",
           "default": 0,
           "description": "Max image width. Use 0 to specify no limit."
         },
-        "wordpress-post.image.maxHeight" : {
+        "wordpress-post.image.maxHeight": {
           "type": "number",
           "default": 0,
           "description": "Max image height. use 0 to specify no limit."
         },
-        "wordpress-post.formatHtml" : {
+        "wordpress-post.formatHtml": {
           "type": "boolean",
           "default": false,
           "description": "Format HTML data before posting."
         },
-        "wordpress-post.formatHtmlAddBlankLineToHeaderTag" : {
+        "wordpress-post.formatHtmlAddBlankLineToHeaderTag": {
           "type": "boolean",
           "default": false,
           "description": "Add a blank line before/after heading tag respectively when formatting HTML."
         },
-        "wordpress-post.formatHtmlAddBlankLineToTableBlock" : {
+        "wordpress-post.formatHtmlAddBlankLineToTableBlock": {
           "type": "boolean",
           "default": false,
           "description": "Add a blank line before/after table block respectively when formatting HTML."
         },
-        "wordpress-post.formatHtmlAddBlankLineToPreBlock" : {
+        "wordpress-post.formatHtmlAddBlankLineToPreBlock": {
           "type": "boolean",
           "default": false,
           "description": "Add a blank line before/after preformatted block respectively when formatting HTML."
         },
-        "wordpress-post.formatHtmlAddBlankLineToDivBlock" : {
+        "wordpress-post.formatHtmlAddBlankLineToDivBlock": {
           "type": "boolean",
           "default": false,
           "description": "Add a blank line before/after div block respectively when formatting HTML."
         },
-        "wordpress-post.enableLinkify" : {
+        "wordpress-post.enableLinkify": {
           "type": "boolean",
           "default": false,
           "description": "Auto-convert URL-like text to links if enabled."
@@ -215,10 +215,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no02": {
@@ -239,10 +239,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no03": {
@@ -263,10 +263,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no04": {
@@ -287,10 +287,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no05": {
@@ -311,12 +311,12 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
-        },        
+        },
         "wordpress-post.customContainer.no06": {
           "type": "object",
           "description": "Create block-level custom containers #6.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
@@ -335,10 +335,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no07": {
@@ -359,10 +359,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no08": {
@@ -383,10 +383,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no09": {
@@ -407,10 +407,10 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.customContainer.no10": {
@@ -431,17 +431,17 @@
             }
           },
           "additionalProperties": false,
-          "default" : {
-            "name" : "",
-            "openingTag" : "",
-            "closingTag" : ""
+          "default": {
+            "name": "",
+            "openingTag": "",
+            "closingTag": ""
           }
         },
         "wordpress-post.useCustomSpan": {
           "type": "boolean",
           "default": false,
           "description": "Enable custom spam feature by using markdown-it-bracketed-spans module."
-        },        
+        },
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,
@@ -477,8 +477,8 @@
     "cheerio": "^1.0.0-rc.10",
     "gray-matter": "^4.0.3",
     "markdown-it": "^12.3.0",
-    "probe-image-size" : "^7.2.3",
-    "sharp" : "^0.30.7",
+    "probe-image-size": "^7.2.3",
+    "sharp": "^0.30.7",
     "js-beautify": "^1.14.4",
     "markdown-it-container": "^3.0.0",
     "markdown-it-bracketed-spans": "^1.0.1",

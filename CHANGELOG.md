@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.0.6-d] - 2022-08-14
+## [0.0.6-e] - 2022-08-19
 - Unofficial version supporting the following features to v0.0.5
 
     - Add customizing code block options
@@ -9,6 +9,17 @@
     - Add formatting HTML option
     - Add linkify URL-like text option
     - Add custom container support (up to 10 containers)
+    - Add custom span support <**new**>
+    
+## [0.0.6-d] - 2022-08-14
+- Unofficial version supporting the following features to v0.0.5
+
+    - Add customizing code block options
+    - Add size attributes to img tag
+    - Add resizing image options
+    - Add formatting HTML option
+    - Add linkify URL-like text option
+    - Add custom container support (**up to 10 containers**)
 
 ## [0.0.6-c] - 2022-08-09
 - Unofficial version supporting the following features to v0.0.5
@@ -18,7 +29,7 @@
     - Add resizing image options
     - Add formatting HTML option
     - Add linkify URL-like text option
-    - Add custom container support (up to 5 containers)
+    - Add custom container support (up to 5 containers) <**new**>
 
 ## [0.0.6-a] - 2022-07-18
 

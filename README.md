@@ -1,6 +1,6 @@
 # Note
 
-This is unofficial version of "WordPress Post" extension. Yur can find source code in github.
+This is **unofficial** version of "WordPress Post" extension. Yur can find source code in github.
 * https://github.com/scratchpadjp/vscode-wordpress-post/tree/integration-local-changes
 
 The following changes were applied to the original version of WordPress Post (0.0.5).
@@ -9,8 +9,9 @@ The following changes were applied to the original version of WordPress Post (0.
 * Add size attributes to img tag (change-image-handling branch)
 * Add resizing image options (change-image-handling branch)
 * Add formatting HTML option (format-html-before-posting branch)
-* Add linkify URL-like text option (linkify-url-like-text)
-* Add custom container options (support custom container)
+* Add linkify URL-like text option (linkify-url-like-text branch)
+* Add custom container options (support-custom-container branch)
+* Add custom span option (support-custom-span branch)
 
 # WordPress Post
 
