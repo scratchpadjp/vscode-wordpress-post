@@ -109,6 +109,11 @@
           "default": false,
           "description": "Add a tag to img tag"
         },
+        "wordpress-post.useLinkableImageOnlyIfSizeIsDifferent": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable link only if linked image size is different from image size in img tag. To use this feature, please enable \"Use Linkable Image\" also."
+        },
         "wordpress-post.codeBlockLanguagePrefix": {
           "type": "string",
           "default": "language-",

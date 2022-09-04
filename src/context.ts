@@ -121,6 +121,21 @@ export class Context {
     return this.getConf("useLinkableImage");
   }
 
+  useLinkableImageOnlyIfSizeIsDifferent(): boolean {
+    return this.getConf("useLinkableImageOnlyIfSizeIsDifferent");
+  }
+  
+  enableLinkToImage([imgWidth, imgHeight] : [number, number], [linkWidth, linkHeight] : [number, number]): boolean {
+    if ( !this.useLinkableImage() ) {
+      return false;
+    }
+    if ( !this.useLinkableImageOnlyIfSizeIsDifferent() ) {
+      return true;
+    }
+
+    return (imgWidth !== linkWidth) || (imgHeight !== linkHeight);  // return true if size is different
+  }
+
   /**
    * Code Block
    */
@@ -218,7 +233,7 @@ export class Context {
    * Custom span
    */
   useCustomSpan(): boolean {
-    return this.getConf("useCustomSpan")
+    return this.getConf("useCustomSpan");
   }
 
   getConf(id: string): any {

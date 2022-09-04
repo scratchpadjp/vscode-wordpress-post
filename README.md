@@ -223,6 +223,7 @@ This extension contributes the following settings:
 * `wordpress-post.typeAttachedImageSlug` : Processing rules for attached image file names.
 * `wordpress-post.mediaTypes` : File extensions and media types to enable.
 * `wordpress-post.useLinkableImage` : Add a tag to img tag.
+* `wordpress-post.useLinkableImageOnlyIfSizeIsDifferent` : Enable link only if linked image size is different from image size in img tag. To use this feature, please enable `wordpress-post.useLinkableImage` also.
 * `wordpress-post.codeBlockLanguagePrefix` : Prefix of class name for code block
 * `wordpress-post.codeBlockTag` : HTML tag which specifies language class
 * `wordpress-post.image.addTitleAttribute` : Add title attribute to img tag.

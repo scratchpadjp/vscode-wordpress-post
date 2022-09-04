@@ -229,7 +229,7 @@ export const post = async (context: Context) => {
       }
     }
     const newImgTag = ch.html(ch(imgs[i]).attr("src", srcAttr));
-    if (context.useLinkableImage()) {
+    if ( context.enableLinkToImage([displayImgWidth, displayImgHeight], [orgImgWidth, orgImgHeight] ) ) {
       context.debug(`[07I] use a tag`);
       ch(imgs[i]).replaceWith(`<a href="${linkUri}">${newImgTag}</a>`);
     } else {
