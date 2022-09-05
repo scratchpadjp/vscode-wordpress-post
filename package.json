@@ -37,7 +37,7 @@
       }
     ],
     "configuration": {
-      "title": "WordPress Post configuration",
+      "title": "WordPress Post",
       "properties": {
         "wordpress-post.siteUrl": {
           "order": 1,
