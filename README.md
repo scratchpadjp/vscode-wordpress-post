@@ -232,8 +232,8 @@ This extension contributes the following settings:
 * `wordpress-post.image.resizeJpegQuality` : JPEG quality when resizing. (default: 80)
 * `wordpress-post.image.resizeJpegUseMozjpeg` : Use mozjpeg to reduce JPEG file size when resizing.
 * `wordpress-post.image.resizePngUsePalette` : Use palette (index color) to reduce PNG file size when resizing.
-* `wordpress-post.image.maxWidth` : Max image width. Use 0 to specify no limit.
-* `wordpress-post.image.maxHeight` : Max image height. use 0 to specify no limit.
+* `wordpress-post.image.maxWidth` : Max image width. Use 0 to specify no limit. This value can e overridden by adding size information after file path in Markdown.
+* `wordpress-post.image.maxHeight` : Max image height. use 0 to specify no limit. This value can e overridden by adding size information after file path in Markdown.
 * `wordpress-post.formatHtml` : Format HTML data before posting.
 * `wordpress-post.formatHtmlAddBlankLineToHeaderTag` : Add a blank line before/after heading tag respectively when formatting HTML.
 * `wordpress-post.formatHtmlAddBlankLineToTableBlock` : Add a blank line before/after table block respectively when formatting HTML.

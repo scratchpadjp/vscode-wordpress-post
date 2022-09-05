@@ -84,6 +84,8 @@ export const post = async (context: Context) => {
       fuzzyEmail: false
     });
   }
+  // enable markdown-it-imsize
+  md.use(require('markdown-it-imsize'));
   // set custom container 
   for (let i = 1; i <= 10; i++ ) {
     const [containerName, openingTag, closingTag ] = context.getCustomContainer(i);
@@ -137,7 +139,14 @@ export const post = async (context: Context) => {
 
     // Get image size information 
     const [orgImgWidth, orgImgHeight] = await getImageSize(docParsedPath.dir, srcAttr);
-    const [maxImgWidth, maxImgHeight] = context.getImageMaxSize();
+    let   [maxImgWidth, maxImgHeight] = context.getImageMaxSize();
+    const [givenWidth, givenHeight ] = [ Number(ch(imgs[i]).attr("width")), Number(ch(imgs[i]).attr("height")) ];
+    if ( !Number.isNaN(givenWidth) ) {
+      maxImgWidth = givenWidth;
+    }
+    if ( !Number.isNaN(givenHeight) ) {
+      maxImgHeight = givenHeight;
+    }
     const [displayImgWidth, displayImgHeight] = calculateImageSize(orgImgWidth, orgImgHeight, maxImgWidth, maxImgHeight);
     
     // replace src attr
@@ -225,6 +234,9 @@ export const post = async (context: Context) => {
         if ( context.imageAddSizeAttributes() ) {
           ch(imgs[i]).attr("width", orgImgWidth.toString());
           ch(imgs[i]).attr("height", orgImgHeight.toString());
+        } else {
+          ch(imgs[i]).removeAttr("width");
+          ch(imgs[i]).removeAttr("height");
         }
       }
     }

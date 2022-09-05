@@ -487,6 +487,7 @@
     "js-beautify": "^1.14.4",
     "markdown-it-container": "^3.0.0",
     "markdown-it-bracketed-spans": "^1.0.1",
-    "markdown-it-attrs": "^4.1.4"
+    "markdown-it-attrs": "^4.1.4",
+    "markdown-it-imsize": "^2.0.1"
   }
 }
