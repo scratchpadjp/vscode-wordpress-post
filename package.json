@@ -187,13 +187,13 @@
           "order": 203,
           "type": "number",
           "default": 0,
-          "description": "Max image width. Use 0 to specify no limit."
+          "description": "Max image width. Image will be resized down to this width when image->resize is enabled. Use 0 to specify no limit."
         },
         "wordpress-post.image.maxHeight": {
           "order": 204,
           "type": "number",
           "default": 0,
-          "description": "Max image height. use 0 to specify no limit."
+          "description": "Max image height. Image will be resized down to this height when image->resize is enabled. Use 0 to specify no limit."
         },
         "wordpress-post.formatHtml": {
           "order": 400,
