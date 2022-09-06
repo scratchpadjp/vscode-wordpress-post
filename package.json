@@ -36,465 +36,504 @@
         "category": "WordPress Post"
       }
     ],
-    "configuration": {
-      "title": "WordPress Post",
-      "properties": {
-        "wordpress-post.siteUrl": {
-          "order": 1,
-          "type": "string",
-          "default": "https://yoursite",
-          "description": "URL of WordPress, used create relative url"
-        },
-        "wordpress-post.apiUrl": {
-          "order": 2,
-          "type": "string",
-          "default": "https://yoursite/wp-json/wp/v2",
-          "description": "URL of WordPress REST API"
-        },
-        "wordpress-post.authUser": {
-          "order": 3,
-          "type": "string",
-          "default": "user",
-          "description": "User of WordPress REST API"
-        },
-        "wordpress-post.authPassword": {
-          "order": 4,
-          "type": "string",
-          "default": "password",
-          "description": "Password of WordPress REST API"
-        },
-        "wordpress-post.slugKeys": {
-          "order": 5,
-          "type": "string",
-          "default": "categories,tags",
-          "description": "List of slug to ID conversions"
-        },
-        "wordpress-post.defaultFeaturedImageId": {
-          "order": 100,
-          "type": "number",
-          "default": -1,
-          "description": "The ID of the featured image when there was no image"
-        },
-        "wordpress-post.slugSepalator": {
-          "order": 6,
-          "type": "string",
-          "default": "-",
-          "description": "Separator for file names to be added"
-        },
-        "wordpress-post.prefixFeaturedImageSlug": {
-          "order": 101,
-          "type": "string",
-          "default": "",
-          "description": "Prefix of featured image slug"
-        },
-        "wordpress-post.suffixFeaturedImageSlug": {
-          "order": 102,
-          "type": "string",
-          "default": "featured-image",
-          "description": "Suffix of featured image slug"
-        },
-        "wordpress-post.typeAttachedImageSlug": {
-          "order": 103,
-          "type": "string",
-          "default": "prefix",
-          "description": "Processing rules for attached image file names.",
-          "enum": [
-            "prefix",
-            "suffix",
-            "none"
-          ],
-          "enumDescriptions": [
-            "Add a document slug prefix to the original file name",
-            "Add a document slug suffix to the original file name",
-            "Use original file name"
-          ]
-        },
-        "wordpress-post.mediaTypes": {
-          "order": 7,
-          "type": "string",
-          "default": ".jpg,image/jpg;.jpeg,image/jpg;.png,image/png",
-          "description": "File extensions and media types to enable."
-        },
-        "wordpress-post.useLinkableImage": {
-          "order": 8,
-          "type": "boolean",
-          "default": false,
-          "description": "Add a tag to img tag"
-        },
-        "wordpress-post.useLinkableImageOnlyIfSizeIsDifferent": {
-          "order": 9,
-          "type": "boolean",
-          "default": false,
-          "description": "Enable link only if linked image size is different from image size in img tag. To use this feature, please enable \"Use Linkable Image\" also."
-        },
-        "wordpress-post.codeBlockLanguagePrefix": {
-          "order": 300,
-          "type": "string",
-          "default": "language-",
-          "description": "Prefix of class name for code block"
-        },
-        "wordpress-post.codeBlockTag": {
-          "order": 301,
-          "type": "string",
-          "default": "code",
-          "description": "HTML tag which specifies language class",
-          "enum": [
-            "code",
-            "pre"
-          ],
-          "enumDescriptions": [
-            "Add class for language to <code> tag",
-            "Add class for language to <pre> tag"
-          ]
-        },
-        "wordpress-post.image.addTitleAttribute": {
-          "order": 200,
-          "type": "boolean",
-          "default": false,
-          "description": "Add title attribute to img tag using alt attribute value if title is not specified in Markdown."
-        },
-        "wordpress-post.image.addSizeAttributes": {
-          "order": 201,
-          "type": "boolean",
-          "default": false,
-          "description": "Add hight and width attributes to img tag."
-        },
-        "wordpress-post.image.resize": {
-          "order": 202,
-          "type": "boolean",
-          "default": false,
-          "description": "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least. In addition, size attributes are automatically added to img tag if this option is true."
-        },
-        "wordpress-post.image.resizeJpegQuality": {
-          "order": 210,
-          "type": "number",
-          "default": 80,
-          "description": "JPEG quality when resizing. (default: 80)"
-        },
-        "wordpress-post.image.resizeJpegUseMozjpeg": {
-          "order": 211,
-          "type": "boolean",
-          "default": false,
-          "description": "Use mozjpeg to reduce JPEG file size when resizing."
-        },
-        "wordpress-post.image.resizePngUsePalette": {
-          "order": 220,
-          "type": "boolean",
-          "default": false,
-          "description": "Use palette (index color) to reduce PNG file size when resizing."
-        },
-        "wordpress-post.image.maxWidth": {
-          "order": 203,
-          "type": "number",
-          "default": 0,
-          "description": "Max image width. Image will be resized down to this width when image->resize is enabled. Use 0 to specify no limit."
-        },
-        "wordpress-post.image.maxHeight": {
-          "order": 204,
-          "type": "number",
-          "default": 0,
-          "description": "Max image height. Image will be resized down to this height when image->resize is enabled. Use 0 to specify no limit."
-        },
-        "wordpress-post.formatHtml": {
-          "order": 400,
-          "type": "boolean",
-          "default": false,
-          "description": "Format HTML data before posting."
-        },
-        "wordpress-post.formatHtmlAddBlankLineToHeaderTag": {
-          "order": 401,
-          "type": "boolean",
-          "default": false,
-          "description": "Add a blank line before/after heading tag respectively when formatting HTML."
-        },
-        "wordpress-post.formatHtmlAddBlankLineToTableBlock": {
-          "order": 402,
-          "type": "boolean",
-          "default": false,
-          "description": "Add a blank line before/after table block respectively when formatting HTML."
-        },
-        "wordpress-post.formatHtmlAddBlankLineToPreBlock": {
-          "order": 403,
-          "type": "boolean",
-          "default": false,
-          "description": "Add a blank line before/after preformatted block respectively when formatting HTML."
-        },
-        "wordpress-post.formatHtmlAddBlankLineToDivBlock": {
-          "order": 404,
-          "type": "boolean",
-          "default": false,
-          "description": "Add a blank line before/after div block respectively when formatting HTML."
-        },
-        "wordpress-post.enableLinkify": {
-          "order": 10,
-          "type": "boolean",
-          "default": false,
-          "description": "Auto-convert URL-like text to links if enabled."
-        },
-        "wordpress-post.customContainer.no01": {
-          "order": 501,
-          "type": "object",
-          "description": "Create block-level custom containers #1.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #1. If blank, this container is disabled."
+    "configuration": [
+      {
+        "title": "General",
+        "order": 10,
+        "properties" : {
+          "wordpress-post.siteUrl": {
+            "order": 10,
+            "type": "string",
+            "default": "https://yoursite",
+            "description": "URL of WordPress, used create relative url"
+          },
+          "wordpress-post.apiUrl": {
+            "order": 20,
+            "type": "string",
+            "default": "https://yoursite/wp-json/wp/v2",
+            "description": "URL of WordPress REST API"
+          },
+          "wordpress-post.authUser": {
+            "order": 30,
+            "type": "string",
+            "default": "user",
+            "description": "User of WordPress REST API"
+          },
+          "wordpress-post.authPassword": {
+            "order": 40,
+            "type": "string",
+            "default": "password",
+            "description": "Password of WordPress REST API"
+          },
+          "wordpress-post.slugKeys": {
+            "order": 50,
+            "type": "string",
+            "default": "categories,tags",
+            "description": "List of slug to ID conversions"
+          },
+          "wordpress-post.slugSepalator": {
+            "order": 60,
+            "type": "string",
+            "default": "-",
+            "description": "Separator for file names to be added"
+          },
+          "wordpress-post.typeAttachedImageSlug": {
+            "order": 70,
+            "type": "string",
+            "default": "prefix",
+            "description": "Processing rules for attached image file names.",
+            "enum": [
+              "prefix",
+              "suffix",
+              "none"
+            ],
+            "enumDescriptions": [
+              "Add a document slug prefix to the original file name",
+              "Add a document slug suffix to the original file name",
+              "Use original file name"
+            ]
+          },
+          "wordpress-post.mediaTypes": {
+            "order": 80,
+            "type": "string",
+            "default": ".jpg,image/jpg;.jpeg,image/jpg;.png,image/png",
+            "description": "File extensions and media types to enable."
+          }
+        }
+      },
+      {
+        "title": "Additional Link",
+        "order": 20,
+        "properties": {
+          "wordpress-post.useLinkableImage": {
+            "order": 10,
+            "type": "boolean",
+            "default": false,
+            "description": "Add a tag to img tag"
+          },
+          "wordpress-post.useLinkableImageOnlyIfSizeIsDifferent": {
+            "order": 20,
+            "type": "boolean",
+            "default": false,
+            "description": "Enable link only if linked image size is different from image size in img tag. To use this feature, please enable \"Use Linkable Image\" also."
+          },
+          "wordpress-post.enableLinkify": {
+            "order": 30,
+            "type": "boolean",
+            "default": false,
+            "description": "Auto-convert URL-like text to links if enabled."
+          }
+        }
+      },
+      {
+        "title": "Featured Image",
+        "order": 30,
+        "properties": {
+          "wordpress-post.defaultFeaturedImageId": {
+            "order": 10,
+            "type": "number",
+            "default": -1,
+            "description": "The ID of the featured image when there was no image"
+          },
+          "wordpress-post.prefixFeaturedImageSlug": {
+            "order": 20,
+            "type": "string",
+            "default": "",
+            "description": "Prefix of featured image slug"
+          },
+          "wordpress-post.suffixFeaturedImageSlug": {
+            "order": 30,
+            "type": "string",
+            "default": "featured-image",
+            "description": "Suffix of featured image slug"
+          }
+        }
+      },
+      {
+        "title": "Image (img tag)",
+        "order": 40,
+        "properties": {
+          "wordpress-post.image.addTitleAttribute": {
+            "order": 10,
+            "type": "boolean",
+            "default": false,
+            "description": "Add title attribute to img tag using alt attribute value if title is not specified in Markdown."
+          },
+          "wordpress-post.image.addSizeAttributes": {
+            "order": 20,
+            "type": "boolean",
+            "default": false,
+            "description": "Add hight and width attributes to img tag."
+          },
+          "wordpress-post.image.resize": {
+            "order": 30,
+            "type": "boolean",
+            "default": false,
+            "description": "Resize image size down to max width or max height if exceeds. To use this feature you need to specify either max width or max height at least. In addition, size attributes are automatically added to img tag if this option is true."
+          },
+          "wordpress-post.image.maxWidth": {
+            "order": 40,
+            "type": "number",
+            "default": 0,
+            "description": "Max image width. Image will be resized down to this width when image->resize is enabled. Use 0 to specify no limit."
+          },
+          "wordpress-post.image.maxHeight": {
+            "order": 50,
+            "type": "number",
+            "default": 0,
+            "description": "Max image height. Image will be resized down to this height when image->resize is enabled. Use 0 to specify no limit."
+          },
+          "wordpress-post.image.resizeJpegQuality": {
+            "order": 60,
+            "type": "number",
+            "default": 80,
+            "description": "JPEG quality when resizing. (default: 80)"
+          },
+          "wordpress-post.image.resizeJpegUseMozjpeg": {
+            "order": 70,
+            "type": "boolean",
+            "default": false,
+            "description": "Use mozjpeg to reduce JPEG file size when resizing."
+          },
+          "wordpress-post.image.resizePngUsePalette": {
+            "order": 80,
+            "type": "boolean",
+            "default": false,
+            "description": "Use palette (index color) to reduce PNG file size when resizing."
+          }
+        }
+      },
+      {
+        "title": "Generated HTML",
+        "order": 50,
+        "properties": {
+          "wordpress-post.codeBlockLanguagePrefix": {
+            "order": 10,
+            "type": "string",
+            "default": "language-",
+            "description": "Prefix of class name for code block"
+          },
+          "wordpress-post.codeBlockTag": {
+            "order": 20,
+            "type": "string",
+            "default": "code",
+            "description": "HTML tag which specifies language class",
+            "enum": [
+              "code",
+              "pre"
+            ],
+            "enumDescriptions": [
+              "Add class for language to <code> tag",
+              "Add class for language to <pre> tag"
+            ]
+          },
+          "wordpress-post.formatHtml": {
+            "order": 30,
+            "type": "boolean",
+            "default": false,
+            "description": "Format HTML data before posting."
+          },
+          "wordpress-post.formatHtmlAddBlankLineToHeaderTag": {
+            "order": 40,
+            "type": "boolean",
+            "default": false,
+            "description": "Add a blank line before/after heading tag respectively when formatting HTML."
+          },
+          "wordpress-post.formatHtmlAddBlankLineToTableBlock": {
+            "order": 50,
+            "type": "boolean",
+            "default": false,
+            "description": "Add a blank line before/after table block respectively when formatting HTML."
+          },
+          "wordpress-post.formatHtmlAddBlankLineToPreBlock": {
+            "order": 60,
+            "type": "boolean",
+            "default": false,
+            "description": "Add a blank line before/after preformatted block respectively when formatting HTML."
+          },
+          "wordpress-post.formatHtmlAddBlankLineToDivBlock": {
+            "order": 70,
+            "type": "boolean",
+            "default": false,
+            "description": "Add a blank line before/after div block respectively when formatting HTML."
+          }
+        }
+      },
+      {
+        "title": "Custom Class",
+        "order": 60,
+        "properties": {
+          "wordpress-post.customContainer.no01": {
+            "order": 10,
+            "type": "object",
+            "description": "Create block-level custom containers #1.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #1. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #1."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #1."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #1."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #1."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no02": {
-          "order": 502,
-          "type": "object",
-          "description": "Create block-level custom containers #2.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #2. If blank, this container is disabled."
+          "wordpress-post.customContainer.no02": {
+            "order": 20,
+            "type": "object",
+            "description": "Create block-level custom containers #2.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #2. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #2."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #2."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #2."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #2."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no03": {
-          "order": 503,
-          "type": "object",
-          "description": "Create block-level custom containers #3.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #3. If blank, this container is disabled."
+          "wordpress-post.customContainer.no03": {
+            "order": 30,
+            "type": "object",
+            "description": "Create block-level custom containers #3.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #3. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #3."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #3."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #3."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #3."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no04": {
-          "order": 504,
-          "type": "object",
-          "description": "Create block-level custom containers #4.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #4. If blank, this container is disabled."
+          "wordpress-post.customContainer.no04": {
+            "order": 40,
+            "type": "object",
+            "description": "Create block-level custom containers #4.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #4. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #4."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #4."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #4."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #4."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no05": {
-          "order": 505,
-          "type": "object",
-          "description": "Create block-level custom containers #5.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #5. If blank, this container is disabled."
+          "wordpress-post.customContainer.no05": {
+            "order": 50,
+            "type": "object",
+            "description": "Create block-level custom containers #5.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #5. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #5."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #5."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #5."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #5."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no06": {
-          "order": 506,
-          "type": "object",
-          "description": "Create block-level custom containers #6.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #6. If blank, this container is disabled."
+          "wordpress-post.customContainer.no06": {
+            "order": 60,
+            "type": "object",
+            "description": "Create block-level custom containers #6.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #6. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #6."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #6."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #6."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #6."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no07": {
-          "order": 507,
-          "type": "object",
-          "description": "Create block-level custom containers #7.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #7. If blank, this container is disabled."
+          "wordpress-post.customContainer.no07": {
+            "order": 70,
+            "type": "object",
+            "description": "Create block-level custom containers #7.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #7. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #7."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #7."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #7."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #7."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no08": {
-          "order": 508,
-          "type": "object",
-          "description": "Create block-level custom containers #8.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #8. If blank, this container is disabled."
+          "wordpress-post.customContainer.no08": {
+            "order": 80,
+            "type": "object",
+            "description": "Create block-level custom containers #8.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #8. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #8."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #8."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #8."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #8."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no09": {
-          "order": 509,
-          "type": "object",
-          "description": "Create block-level custom containers #9.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #9. If blank, this container is disabled."
+          "wordpress-post.customContainer.no09": {
+            "order": 90,
+            "type": "object",
+            "description": "Create block-level custom containers #9.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #9. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #9."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #9."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #9."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #9."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
-          }
-        },
-        "wordpress-post.customContainer.no10": {
-          "order": 510,
-          "type": "object",
-          "description": "Create block-level custom containers #10.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of custom container #10. If blank, this container is disabled."
+          "wordpress-post.customContainer.no10": {
+            "order": 100,
+            "type": "object",
+            "description": "Create block-level custom containers #10.\nIf name is blank, this custom container is disabled.\nIf both openingTag and closingTag are blank, default container (<div class=\"name\"> and </div>) is used.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of custom container #10. If blank, this container is disabled."
+              },
+              "openingTag": {
+                "type": "string",
+                "description": "Opening HTML code of custom container #10."
+              },
+              "closingTag": {
+                "type": "string",
+                "description": "Closing HTML code of custom container #10."
+              }
             },
-            "openingTag": {
-              "type": "string",
-              "description": "Opening HTML code of custom container #10."
-            },
-            "closingTag": {
-              "type": "string",
-              "description": "Closing HTML code of custom container #10."
+            "additionalProperties": false,
+            "default": {
+              "name": "",
+              "openingTag": "",
+              "closingTag": ""
             }
           },
-          "additionalProperties": false,
-          "default": {
-            "name": "",
-            "openingTag": "",
-            "closingTag": ""
+          "wordpress-post.useCustomSpan": {
+            "order": 1000,
+            "type": "boolean",
+            "default": false,
+            "description": "Enable custom spam feature by using markdown-it-bracketed-spans module."
           }
-        },
-        "wordpress-post.useCustomSpan": {
-          "order": 600,
-          "type": "boolean",
-          "default": false,
-          "description": "Enable custom spam feature by using markdown-it-bracketed-spans module."
-        },
-        "wordpress-post.debug": {
-          "order": 999999,
-          "type": "boolean",
-          "default": false,
-          "description": "Debug of this extension."
+        }
+      },
+      {
+        "title": "Debug",
+        "order": 9999999,
+        "properties": {
+          "wordpress-post.debug": {
+            "order": 10,
+            "type": "boolean",
+            "default": false,
+            "description": "Debug of this extension."
+          }
         }
       }
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
