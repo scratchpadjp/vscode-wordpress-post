@@ -12,6 +12,7 @@ The following changes were applied to the original version of WordPress Post (0.
 * Add linkify URL-like text option (linkify-url-like-text branch)
 * Add custom container options (support-custom-container branch)
 * Add custom span option (support-custom-span branch)
+* Add raw HTML block option
 
 # WordPress Post
 
