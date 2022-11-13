@@ -518,6 +518,12 @@
             "type": "boolean",
             "default": false,
             "description": "Enable custom spam feature by using markdown-it-bracketed-spans module."
+          },
+          "wordpress-post.useRawHtmlBlock": {
+            "order": 1010,
+            "type": "boolean",
+            "default": false,
+            "description": "Enable raw HTML block by using markdown-it-html module. The raw HTML block should be defined by '<!--!' and '!-->'."
           }
         }
       },
@@ -568,6 +574,7 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-bracketed-spans": "^1.0.1",
     "markdown-it-attrs": "^4.1.4",
-    "markdown-it-imsize": "^2.0.1"
+    "markdown-it-imsize": "^2.0.1",
+    "markdown-it-html" : "^1.0.0"
   }
 }

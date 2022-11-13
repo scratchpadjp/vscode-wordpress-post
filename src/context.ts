@@ -236,6 +236,13 @@ export class Context {
     return this.getConf("useCustomSpan");
   }
 
+  /**
+   * Raw HTML Block
+   */
+  useRawHtmlBlock(): boolean {
+      return this.getConf("useRawHtmlBlock");
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }

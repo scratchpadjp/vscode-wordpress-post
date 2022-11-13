@@ -111,6 +111,11 @@ export const post = async (context: Context) => {
   if ( context.useCustomSpan() ) {
     md.use(require('markdown-it-bracketed-spans')).use(require('markdown-it-attrs'));
   }
+  // enable RAW HTML Block
+  if (context.useRawHtmlBlock()) {
+    md.set({ html: true });
+    md.use(require("markdown-it-html"));
+  }  
   // convert markdown -> post data content (HTML)
   postData["content"] = md.render(markdown.content);
   context.debug(`[06E] converted to html`);
