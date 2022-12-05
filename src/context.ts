@@ -23,6 +23,18 @@ export class Context {
   }
 
   /**
+   * Protocol part of site URL
+   */
+  getSiteProtocol(): string {
+    const siteUrl: string = this.getConf("siteUrl");
+    const result = siteUrl.match(/^.*:/);
+    if ( result !== null ) {
+      return result[0];
+    }
+    return "";
+  }
+
+  /**
    * URL of REST API
    */
   getUrl(label: string): string {

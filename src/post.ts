@@ -122,6 +122,7 @@ export const post = async (context: Context) => {
 
   // upload attached image file, change src
   context.debug(`[07S] process attached images`);
+  const protocol = context.getSiteProtocol();
   const ch = cheerio.load(postData["content"]);
   const imgs = ch("img");
   for (let i = 0; i < imgs.length; i++) {
@@ -130,6 +131,10 @@ export const post = async (context: Context) => {
     if (!srcAttr) {
       context.debug(`[07I] skip image tag`);
       continue;
+    }
+    // if srcAttr starts with '//', add protocol part ("https:" or "http;")
+    if ( srcAttr.match(/^\/\//) !== null ) {
+      srcAttr = protocol + srcAttr;
     }
 
     // save src attr to use useLinkableImage
