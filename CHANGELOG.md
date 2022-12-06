@@ -1,5 +1,38 @@
 # Change Log
 
+## [0.0.6-h] - 2022-12-06
+- Unofficial version supporting the following features to v0.0.5
+
+    - Add customizing code block options
+    - Add size attributes to img tag
+    - Add resizing image options
+      - max size can be overridden by giving size information in Markdown
+    - Add formatting HTML option
+    - Add linkify URL-like text option
+    - Add custom container support (up to 10 containers)
+    - Add custom span support
+    - Linkable image can be enabled when image size is different
+    - Categorize configuration properties to improve readability
+    - Give explicit order for configuration properties to improve readability
+    - Add raw HTML block support
+    - Fix an issue when protocol part is omitted in src attribute of img tag (**new**)
+
+## [0.0.6-g] - 2022-11-13
+- Unofficial version supporting the following features to v0.0.5
+
+    - Add customizing code block options
+    - Add size attributes to img tag
+    - Add resizing image options
+      - max size can be overridden by giving size information in Markdown
+    - Add formatting HTML option
+    - Add linkify URL-like text option
+    - Add custom container support (up to 10 containers)
+    - Add custom span support
+    - Linkable image can be enabled when image size is different
+    - Categorize configuration properties to improve readability
+    - Give explicit order for configuration properties to improve readability
+    - Add raw HTML block support (**new**)
+
 ## [0.0.6-f] - 2022-09-06
 - Unofficial version supporting the following features to v0.0.5
 
