@@ -10,11 +10,18 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "wordpress-post.post",
     async () => {
-      try {
-        await post(appContext);
-      } catch (e: any) {
-        vscode.window.showErrorMessage(e.message);
-      }
+      vscode.window.withProgress({
+        location: vscode.ProgressLocation.Notification,
+        title: "Posting to WordPress (" + appContext.getSiteUrl() + ")" 
+      }, async (progress) => {
+
+        try {
+          await post(appContext);
+        } catch (e: any) {
+          vscode.window.showErrorMessage(e.message);
+        }
+
+      });
     }
   );
 

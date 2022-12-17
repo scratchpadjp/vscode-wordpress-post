@@ -23,10 +23,14 @@ export class Context {
   }
 
   /**
-   * Protocol part of site URL
+   * Site URL and its protocol part
    */
+  getSiteUrl(): string {
+    return this.getConf("siteUrl");
+  }
+
   getSiteProtocol(): string {
-    const siteUrl: string = this.getConf("siteUrl");
+    const siteUrl: string = this.getSiteUrl();
     const result = siteUrl.match(/^.*:/);
     if ( result !== null ) {
       return result[0];
