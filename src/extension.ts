@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
       }, async (progress) => {
 
         try {
-          await post(appContext);
+          await post(appContext, progress);
         } catch (e: any) {
           vscode.window.showErrorMessage(e.message);
         }

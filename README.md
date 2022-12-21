@@ -14,7 +14,7 @@ The following changes were applied to the original version of WordPress Post (0.
 * Add custom span option (support-custom-span branch)
 * Add raw HTML block option
 * Fix an issue when protocol part is omitted in src attribute of img tag
-* Add progress notification when running this extension
+* Add detailed progress notification when running this extension
 
 # WordPress Post
 

@@ -11,9 +11,10 @@ const REG_WWWIMG = new RegExp("^(http|https):.+");
 /**
  * Post to wordpress from current document.
  */
-export const post = async (context: Context) => {
+export const post = async (context: Context, progress: any) => {
   // start
   context.debug(`[00S] post start`);
+  progress.report({message: "Initializing", increment: 0});
 
   // current document
   context.debug(`[01S] get document`);
@@ -67,10 +68,12 @@ export const post = async (context: Context) => {
     postData["slug"] = docParsedPath.name;
   }
   context.debug(`[04E] detected document slug : ${postData["slug"]}`);
+  progress.report({message: "Initializing", increment: 5});
 
   // markdown -> post data content
   // initialize markdown-it module
   context.debug(`[06S] convert to html`);
+  progress.report({message: "Converting Markdown to HTML", increment: 0});
   const md = require('markdown-it')({
     linkify: context.getEnableLinkify(),
     highlight: function (str: string, lang: string) {
@@ -119,13 +122,19 @@ export const post = async (context: Context) => {
   // convert markdown -> post data content (HTML)
   postData["content"] = md.render(markdown.content);
   context.debug(`[06E] converted to html`);
+  progress.report({message: "Converting Markdown to HTML", increment: 5});
 
   // upload attached image file, change src
   context.debug(`[07S] process attached images`);
   const protocol = context.getSiteProtocol();
   const ch = cheerio.load(postData["content"]);
   const imgs = ch("img");
+  const progressStep = 90 / ( imgs.length + 1 + 1); /* "1+1" means "featured_media and upload document" */
   for (let i = 0; i < imgs.length; i++) {
+    // update progress bar
+    const progressMessage = "Processing images [" + (i + 1) + "/" + imgs.length + "]";
+    progress.report({message: progressMessage, increment :0});
+
     // src attr
     let srcAttr = ch(imgs[i]).attr("src");
     if (!srcAttr) {
@@ -258,6 +267,7 @@ export const post = async (context: Context) => {
       context.debug(`[07I] not use a tag`);
       ch(imgs[i]).replaceWith(`${newImgTag}`);
     }
+    progress.report({message: progressMessage, increment: progressStep});
   }
   context.debug(`[07E] processed attached images`);
 
@@ -267,6 +277,7 @@ export const post = async (context: Context) => {
   context.debug(`[08E] updated html`);
 
   // featured image upload
+  progress.report({message: "Processing featured image", increment: 0});
   if (!postData["featured_media"]) {
     context.debug(`[09S] upload featured image`);
     const imgPath = findLocalFeaturedImage(context, docParsedPath);
@@ -286,6 +297,7 @@ export const post = async (context: Context) => {
       context.debug(`[09E] uploaded image id: ${postData["featured_media"]}`);
     }
   }
+  progress.report({message: "Processing featured image", increment: progressStep});
 
   // format HTML if needed
   if ( context.getFormatHtml() ) {
@@ -325,6 +337,7 @@ export const post = async (context: Context) => {
 
   // post
   context.debug(`[10S] post document`);
+  progress.report({message: "Posting document", increment: 0});
   const postItem = await getWpItem(
     context,
     "posts",
@@ -344,6 +357,7 @@ export const post = async (context: Context) => {
     data: postData,
     auth: context.getAuth(),
   });
+  progress.report({message: "Posting document", increment: progressStep});
   const msg = `Finished posting to WordPress. id = ${res.data["id"]}`;
   context.debug(`[10E] ${msg}`);
   vscode.window.showInformationMessage(msg);
