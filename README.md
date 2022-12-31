@@ -15,6 +15,7 @@ The following changes were applied to the original version of WordPress Post (0.
 * Add raw HTML block option
 * Fix an issue when protocol part is omitted in src attribute of img tag
 * Add detailed progress notification when running this extension
+* Fix invalid image URI issue when "siteUrl" has trailing slash
 
 # WordPress Post
 

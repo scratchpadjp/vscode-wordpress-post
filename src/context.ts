@@ -129,7 +129,7 @@ export class Context {
    * Create relative Url
    */
   replaceAttachedImageUrl(imgSrc: string): string {
-    const siteUrl: string = this.getConf("siteUrl");
+    const siteUrl: string = this.getConf("siteUrl").replace(/\/$/, ''); // remove trailing slash if exist
     return imgSrc.replace(siteUrl, "");
   }
 
