@@ -245,10 +245,11 @@ export const post = async (context: Context, progress: any) => {
           /* upload thumbnail to wordpress */
           const imgItem = await uploadImage(context, thumbnailSlug, thumbnail);
           srcAttr = context.replaceAttachedImageUrl(imgItem["source_url"]);
-
+        }
+        if ( context.imageAddSizeAttributes() ) {
           ch(imgs[i]).attr("width", displayImgWidth.toString());
           ch(imgs[i]).attr("height", displayImgHeight.toString());
-        }
+        } 
       } else {
         if ( context.imageAddSizeAttributes() ) {
           ch(imgs[i]).attr("width", orgImgWidth.toString());
