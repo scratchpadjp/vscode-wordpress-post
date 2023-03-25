@@ -371,20 +371,41 @@ export const post = async (context: Context, progress: any) => {
  * upload image to wordpess
  */
 const uploadImage = async (context: Context, slug: string, imgPath: string) => {
-  // path
-  const imgParsedPath = path.parse(imgPath);
-
-  // find image from wordpress, if exists return this item
-  const item = await getWpItem(context, "media", { slug: slug }, false);
-  if (item) {
-    return item;
-  }
-
   // if not exists local image, error
   if (!fs.existsSync(imgPath)) {
     throw new Error(`Not found local image file : ${imgPath}`);
   }
+  // path
+  const imgParsedPath = path.parse(imgPath);
+  // load image
+  const imageBin = fs.readFileSync(imgPath);
 
+  // find image from wordpress, if exists return this item
+  var item = await getWpItem(context, "media", { slug: slug }, false);
+  if (!item) {
+    // sometime wordpress adds '-1' as a suffix of image's slug, so we need to check this variation too.
+    item = await getWpItem(context, "media", { slug: slug + '-1'}, false);
+  }
+
+  // If same slug image exist, check if the existing image is same as local file
+  if (item) {
+    let existingUrlResponse = await axios.get(item.source_url, {responseType : 'arraybuffer'});
+    if ( existingUrlResponse.status === 200 ) {
+      if ( Buffer.compare(existingUrlResponse.data, imageBin) === 0) {
+        // if same, use existing image
+        return item;
+      }
+    }
+    // if not same, delete it
+    let postUrl = context.getUrl("media");
+    postUrl = `${postUrl}/${item["id"]}?force=true`;
+    await axios({
+      url: postUrl,
+      method: `DELETE`,
+      auth: context.getAuth(),
+    });
+  }
+  
   // create header
   const headers: { [name: string]: string } = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -392,14 +413,6 @@ const uploadImage = async (context: Context, slug: string, imgPath: string) => {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     "Content-Disposition": `attachment; filename=${slug}${imgParsedPath.ext}`,
   };
-
-  // load image
-  let imageBin;
-  try {
-    imageBin = fs.readFileSync(imgPath);
-  } catch (e) {
-    throw new Error(`failed to read: ${e}`);
-  }
 
   // post (upload image)
   const res = await axios({
