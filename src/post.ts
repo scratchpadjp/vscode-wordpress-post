@@ -195,6 +195,12 @@ export const post = async (context: Context, progress: any) => {
       context.debug(`[07I] image slug: ${imgSlug}`);
       const imgItem = await uploadImage(context, imgSlug, attachedImgPath);
 
+      // upload webp version also if enabled
+      if (context.imageUploadWebp()) {
+        const webpPath = await generateWebp(attachedImgPath);
+        await uploadImage(context, imgItem["slug"] + path.parse(attachedImgPath).ext, webpPath);
+      }
+
       // replace src
       srcAttr = context.replaceAttachedImageUrl(imgItem["source_url"]);
       linkUri = srcAttr;
@@ -245,6 +251,12 @@ export const post = async (context: Context, progress: any) => {
           /* upload thumbnail to wordpress */
           const imgItem = await uploadImage(context, thumbnailSlug, thumbnail);
           srcAttr = context.replaceAttachedImageUrl(imgItem["source_url"]);
+
+          // upload webp version also if enabled
+          if (context.imageUploadWebp()) {
+            const webpPath = await generateWebp(thumbnail);
+            await uploadImage(context, imgItem["slug"] + path.parse(thumbnail).ext, webpPath);
+          }
         }
         if ( context.imageAddSizeAttributes() ) {
           ch(imgs[i]).attr("width", displayImgWidth.toString());
@@ -296,6 +308,12 @@ export const post = async (context: Context, progress: any) => {
       const imgItem = await uploadImage(context, imgSlug, imgPath);
       postData["featured_media"] = imgItem["id"];
       context.debug(`[09E] uploaded image id: ${postData["featured_media"]}`);
+
+      // upload webp version also if enabled
+      if (context.imageUploadWebp()) {
+        const webpPath = await generateWebp(imgPath);
+        await uploadImage(context, imgItem["slug"] + path.parse(imgPath).ext, webpPath);
+      }
     }
   }
   progress.report({message: "Processing featured image", increment: progressStep});
@@ -515,3 +533,24 @@ function calculateImageSize(imgWidth: number, imgHeight: number, maxWidth: numbe
     return [Math.trunc(imgWidth * maxHeight / imgHeight), maxHeight];
   }
 };
+
+async function generateWebp(imgPath: string) {
+  const webpPath = imgPath + '.webp';
+  try {
+    const sharp = require("sharp");
+    let options = {};
+    const ext = path.parse(imgPath).ext.toLowerCase();
+    if (ext === ".jpg" || ext === ".jpeg") {
+      options = { lossless : false };
+    }
+    if (ext === ".png") {
+      options = { lossless : true };
+    }
+    const data = await sharp(imgPath).webp(options);
+    await data.toFile(webpPath);
+  } catch (err) {
+    const msg = `Can't generate webp file: ${imgPath}`;
+    throw new Error(msg);
+  }
+  return webpPath;
+}

@@ -172,12 +172,20 @@ export class Context {
   /**
    * img tag
    */
+  imageRemoveIfExist(): boolean {
+    return this.getConf("wordpress-post.image.removeIfExist");
+  }
+
   imageAddTitleAttribute(): boolean {
     return this.getConf("image.addTitleAttribute");
   }
 
   imageAddSizeAttributes(): boolean {
     return this.getConf("image.addSizeAttributes");
+  }
+
+  imageUploadWebp(): boolean {
+    return this.getConf("image.uploadWebp");
   }
 
   /**
