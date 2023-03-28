@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.0.6-m] - 2023-03-28
+## [0.0.6-m] - 2023-03-29
 - Unofficial version supporting the following features to v0.0.5
 
     - Add customizing code block options
@@ -21,6 +21,7 @@
     - Fix invalid image URI issue when "siteUrl" has trailing slash
     - WebP image can be uploaded along with uploading JPEG/PNG image
     - Existing images can be removed before uploading new image to avoid multiple uploading
+    - Update dependencies
 
 ## [0.0.6-l] - 2023-03-17
 - Unofficial version supporting the following features to v0.0.5
