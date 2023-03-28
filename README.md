@@ -16,6 +16,8 @@ The following changes were applied to the original version of WordPress Post (0.
 * Fix an issue when protocol part is omitted in src attribute of img tag
 * Add detailed progress notification when running this extension
 * Fix invalid image URI issue when "siteUrl" has trailing slash
+* WebP image can be uploaded along with uploading JPEG/PNG image
+* Existing images can be removed before uploading new image to avoid multiple uploading
 
 # WordPress Post
 

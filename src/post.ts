@@ -240,6 +240,9 @@ export const post = async (context: Context, progress: any) => {
                 palette: context.usePngPalette()
               });
             }
+            if (fs.existsSync(thumbnail)) {
+              fs.unlinkSync(thumbnail); // delete old thumbnail if exist
+            }
             await data.toFile(thumbnail);
           }
           catch(err) {
@@ -385,6 +388,19 @@ export const post = async (context: Context, progress: any) => {
   context.debug(`[00E] post end`);
 };
 
+/** 
+ * search images in wordpress
+ */
+const searchMediaInWordPress = async(context: Context, keyword: string) => {
+  const res = await axios({
+    url: context.getUrl("media"),
+    method: 'GET',
+    params: {search : keyword},
+    auth: context.getAuth(),
+  });
+  return res.data;
+};
+
 /**
  * upload image to wordpess
  */
@@ -394,42 +410,51 @@ const uploadImage = async (context: Context, slug: string, imgPath: string) => {
     throw new Error(`Not found local image file : ${imgPath}`);
   }
   // path
-  const imgParsedPath = path.parse(imgPath);
+  const imageExt = path.parse(imgPath).ext.toLowerCase();
   // load image
   const imageBin = fs.readFileSync(imgPath);
-
+  
   // find image from wordpress, if exists return this item
-  var item = await getWpItem(context, "media", { slug: slug }, false);
-  if (!item) {
-    // sometime wordpress adds '-1' as a suffix of image's slug, so we need to check this variation too.
-    item = await getWpItem(context, "media", { slug: slug + '-1'}, false);
-  }
-
-  // If same slug image exist, check if the existing image is same as local file
-  if (item) {
-    let existingUrlResponse = await axios.get(item.source_url, {responseType : 'arraybuffer'});
-    if ( existingUrlResponse.status === 200 ) {
-      if ( Buffer.compare(existingUrlResponse.data, imageBin) === 0) {
-        // if same, use existing image
-        return item;
-      }
+  const items = await searchMediaInWordPress(context, slug);
+  for (const item of items) {
+    const itemSlug = item["slug"];
+    const itemSlugOriginal = itemSlug.replace(/-[0-9]+$/,""); // remove suffix like "-1", "-2" or etc
+    if (itemSlugOriginal !== slug.toLowerCase()) {
+      continue; // item's slug doesn't match with given slug, skip this item
     }
-    // if not same, delete it
-    let postUrl = context.getUrl("media");
-    postUrl = `${postUrl}/${item["id"]}?force=true`;
-    await axios({
-      url: postUrl,
-      method: `DELETE`,
-      auth: context.getAuth(),
-    });
+
+    if (!item["source_url"].endsWith(imageExt.toLowerCase())) {
+      continue; // item has different extension, skip this item
+    }
+    
+    const res = await axios.get(item["source_url"], {responseType : 'arraybuffer'});
+    if (res.status !== 200) {
+      continue; // item doesn't exist, skip this item
+    }
+
+    if (Buffer.compare(res.data, imageBin) !== 0) {
+      // same file is there but data is different
+      if (context.imageRemoveIfExist()) {
+        let postUrl = context.getUrl("media");
+        postUrl = `${postUrl}/${item["id"]}?force=true`;
+        await axios({
+          url: postUrl,
+          method: `DELETE`,
+          auth: context.getAuth(),
+        });
+      }
+      continue; // different binary, skip this item
+    }
+
+    return item;  // same image data is already in WordPress, use this item
   }
   
   // create header
   const headers: { [name: string]: string } = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    "Content-Type": context.getMediaType(imgParsedPath.ext),
+    "Content-Type": context.getMediaType(imageExt),
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    "Content-Disposition": `attachment; filename=${slug}${imgParsedPath.ext}`,
+    "Content-Disposition": `attachment; filename=${slug}${imageExt}`,
   };
 
   // post (upload image)

@@ -157,7 +157,7 @@
             "order": 10,
             "type": "boolean",
             "default": false,
-            "description": "Remove existing images which have same slug ('same' means 'prefix matching') before uploading new image."
+            "description": "Remove existing images which have same slug ('same' means 'prefix matching') before uploading new image. Note: it is recommended to reload the image after uploading because the removed image may be being cached by your browser."
           },
           "wordpress-post.image.addTitleAttribute": {
             "order": 20,
@@ -211,7 +211,7 @@
             "order": 100,
             "type": "boolean",
             "default": false,
-            "description": "Upload WebP image in addition to JPEG/PNG image."
+            "description": "Upload WebP image in addition to JPEG/PNG image. \".webp,image/webp\" must be added to wordpress-post.mediaTypes when enabling this option."
           }
         }
       },
