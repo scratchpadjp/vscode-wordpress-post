@@ -173,7 +173,7 @@ export class Context {
    * img tag
    */
   imageRemoveIfExist(): boolean {
-    return this.getConf("wordpress-post.image.removeIfExist");
+    return this.getConf("image.removeIfExist");
   }
 
   imageAddTitleAttribute(): boolean {
