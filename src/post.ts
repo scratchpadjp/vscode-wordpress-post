@@ -207,18 +207,18 @@ export const post = async (context: Context, progress: any) => {
 
       context.debug(`[07I] final image src: ${srcAttr}`);
 
-      // generate thumbnail image if needed.
+      // generate resized image if needed.
       if ( context.imageResize() ) {
         if ( (orgImgWidth !== displayImgWidth) || (orgImgHeight !== displayImgHeight) ) {
           const size = displayImgWidth.toString() + "x" + displayImgHeight.toString();
-          const thumbnail = 
+          const resizedImagePath = 
             path.join(
               path.parse(attachedImgPath).dir,
               path.parse(attachedImgPath).name + "-" + size + path.parse(attachedImgPath).ext
             );
-          const thumbnailSlug = context.getAttachedImageThumbnailSlug(imgSlug, displayImgWidth, displayImgHeight);  
+          const resizedImageSlug = context.getResizedImageSlug(imgSlug, displayImgWidth, displayImgHeight);  
 
-          /* generate thumbnail */
+          /* generate resized image */
           const sharp = require("sharp");
           try {
             let data = sharp(attachedImgPath).resize({
@@ -240,25 +240,25 @@ export const post = async (context: Context, progress: any) => {
                 palette: context.usePngPalette()
               });
             }
-            if (fs.existsSync(thumbnail)) {
-              fs.unlinkSync(thumbnail); // delete old thumbnail if exist
+            if (fs.existsSync(resizedImagePath)) {
+              fs.unlinkSync(resizedImagePath); // delete old resized image if exist
             }
-            await data.toFile(thumbnail);
+            await data.toFile(resizedImagePath);
           }
           catch(err) {
-            const msg = `Can't generate thumbnail file: ${attachedImgPath}`;
+            const msg = `Can't generate resized image file: ${attachedImgPath}`;
             context.debug(msg);
             throw new Error(msg);
           };
 
-          /* upload thumbnail to wordpress */
-          const imgItem = await uploadImage(context, thumbnailSlug, thumbnail);
+          /* upload resized image to wordpress */
+          const imgItem = await uploadImage(context, resizedImageSlug, resizedImagePath);
           srcAttr = context.replaceAttachedImageUrl(imgItem["source_url"]);
 
           // upload webp version also if enabled
           if (context.imageUploadWebp()) {
-            const webpPath = await generateWebp(thumbnail);
-            await uploadImage(context, imgItem["slug"] + path.parse(thumbnail).ext, webpPath);
+            const webpPath = await generateWebp(resizedImagePath);
+            await uploadImage(context, imgItem["slug"] + path.parse(resizedImagePath).ext, webpPath);
           }
         }
         if ( context.imageAddSizeAttributes() ) {

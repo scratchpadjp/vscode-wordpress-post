@@ -93,12 +93,12 @@ export class Context {
   }
 
   /**
-   * Slug of attached image thumbnail
+   * Slug of resized image
    */
-  getAttachedImageThumbnailSlug(imageSlug: string, width: number, height: number): string {
+  getResizedImageSlug(imageSlug: string, width: number, height: number): string {
     const sep: string = this.getConf("slugSepalator");
-    const size: string = width.toString() + "x" + height.toString();
-    return imageSlug + sep + size;
+    const suffix: string = "s";
+    return imageSlug + sep + suffix;
   }
 
   /**
