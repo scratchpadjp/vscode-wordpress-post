@@ -350,7 +350,7 @@ export const post = async (context: Context, progress: any) => {
       postData["content"] = content;
     }
       // add blank line before <div> and after </div> respectively
-    if ( context.getAddBlankLineToPre() ) {
+    if ( context.getAddBlankLineToDiv() ) {
       let content = postData["content"];
       content = content.replace(/<div/g, '\n<div').replace(/<\/div>/g, '</div>\n');
       postData["content"] = content;

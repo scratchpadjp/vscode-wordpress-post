@@ -1,5 +1,29 @@
 # Change Log
 
+## [0.0.6-n] - 2023-04-11
+- Unofficial version supporting the following features to v0.0.5
+
+    - Add customizing code block options
+    - Add size attributes to img tag
+      - Fix an issue that size attribute is not given in some situation  
+    - Add resizing image options
+      - Max size can be overridden by giving size information in Markdown
+    - Add formatting HTML option
+    - Add linkify URL-like text option
+    - Add custom container support (up to 10 containers)
+    - Add custom span support
+    - Linkable image can be enabled when image size is different
+    - Categorize configuration properties to improve readability
+    - Give explicit order for configuration properties to improve readability
+    - Add raw HTML block support
+    - Fix an issue when protocol part is omitted in src attribute of img tag
+    - Add detailed progress notification when running this extension
+    - Fix invalid image URI issue when "siteUrl" has trailing slash
+    - WebP image can be uploaded along with uploading JPEG/PNG image
+    - Existing images can be removed before uploading new image to avoid multiple uploading
+    - Update dependencies
+    - Fix an issue that wordpress-post.formatHtmlAddBlankLineToDivBlock option doesn't work
+
 ## [0.0.6-m] - 2023-03-29
 - Unofficial version supporting the following features to v0.0.5
 
